@@ -15,9 +15,7 @@ import csv
 # ---------------------------------------------------------------------------
 # STEP 1: Define your seasons
 # ---------------------------------------------------------------------------
-# Adjust the month numbers below to match the three seasons you're using.
-# Months are numbers: January = 1, February = 2, ... December = 12
-# Example below uses three of the six Nyoongar seasons - change as needed.
+# This dictionary is the "key" that links calendar months to season names.
 
 SEASON_MONTHS = {
     "Kambarang": [10, 11],        # October-November
@@ -34,7 +32,7 @@ def get_season_for_month(month_number):
     for season_name, months in SEASON_MONTHS.items():
         if month_number in months:
             return season_name
-    return None
+    return None # If we reach this line, no season matched this month
 
 
 # ---------------------------------------------------------------------------
@@ -45,20 +43,32 @@ def load_weather_data(filepath):
     """
     Reads combined_data.csv and returns a list of dictionaries, one per row.
 
-    Expected columns: year, month, temperature, precipitation
+    Expected columns: Year, Month, Temperature, Precipitation
     """
-    records = []
+    records = []     # This empty list will collect every row we successfully read
+# "with open(...)" opens the file and automatically closes it again
+# when we're done - you don't need to worry about closing it yourself
 
     with open(filepath, newline="", encoding="utf-8") as f:
+        # DictReader reads the CSV so each row becomes a dictionary,
+        # using the column headers (Year, Month, Temperature, Precipitation)
+        # as the keys. This is much easier to work with than raw text.
         reader = csv.DictReader(f)
 
-        for row in reader:
+        for row in reader: # Go through the file one row at a time
+            # try/except means: "attempt this code, but if something goes
+            # wrong (like a missing or broken value), don't crash the whole
+            # program - just skip this one row and move to the next"
             try:
+                # Convert the text from the CSV into actual numbers.
+                # CSV files store everything as text by default, so we need
+                # int() for whole numbers and float() for decimal numbers.
                 year = int(row["Year"])
                 month = int(row["Month"])
                 temperature = float(row["Temperature"])
                 precipitation = float(row["Precipitation"])
-
+                # Build one clean dictionary for this row of data,
+                # including which season this month belongs to
                 record = {
                     "Year": year,
                     "Month": month,
@@ -66,12 +76,21 @@ def load_weather_data(filepath):
                     "Temperature": temperature,
                     "Precipitation": precipitation,
                 }
-                records.append(record)
+                records.append(record)         # Add this row's dictionary to our overall list
+
 
             except (ValueError, KeyError):
                 # If a row is badly formatted or has missing/text values,
                 # skip it rather than crashing the whole app
+                 # ValueError = a value couldn't be converted to a number
+                #              (e.g. the cell was blank or had text in it)
+                # KeyError   = a column name we expected wasn't found
+                # Either way, we just skip this row and keep going -
+                # this is what "handles invalid input" for your data loading
                 continue
+
+
+    # Once every row has been processed, hand back the full list
 
     return records
 
@@ -86,15 +105,26 @@ def get_season_summary(records, season_name):
     return a dictionary of simple stats for that season:
     average temperature, average precipitation, number of records.
     """
+    # This line is called a "list comprehension" - it's a compact way of
+    # writing a loop. It means: "give me every record r from records,
+    # but only keep the ones where r's season matches the one we want."
     season_records = [r for r in records if r["season"] == season_name]
-
+ # If no rows matched this season, there's nothing to calculate -
+    # return None so the app can handle this gracefully (e.g. show a
+    # "no data available" message instead of crashing)
     if not season_records:
         return None  # no data for this season - handle this in your app!
 
+ # How many rows of data we found for this season
     total_records = len(season_records)
+     # sum(...) adds up a list of numbers.
+    # Here we're pulling out just the temperature value from every record
+    # in season_records, adding them all up, then dividing by the count
+    # to get the average (mean).
     avg_temp = sum(r["Temperature"] for r in season_records) / total_records
     avg_precip = sum(r["Precipitation"] for r in season_records) / total_records
-
+# round(x, 1) rounds a number to 1 decimal place, just to keep the
+    # output tidy (e.g. 18.34999 becomes 18.3)
     return {
         "season": season_name,
         "records_count": total_records,
@@ -107,6 +137,8 @@ def get_all_season_summaries(records):
     """Returns a summary for every season you've defined, ready to display."""
     return [
         get_season_summary(records, season)
+            # Go through each season name we defined at the top of the file
+
         for season in SEASON_MONTHS
         if get_season_summary(records, season) is not None
     ]
