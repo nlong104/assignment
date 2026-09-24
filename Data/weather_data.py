@@ -1,13 +1,13 @@
 """
 weather_data.py
 
-This file does three simple things:
-1. Loads temperature and precipitation data from combined_data.csv
-2. Works out which Nyoongar season each row belongs to (based on the month)
-3. Gives you simple functions to get useful info back out (averages, totals)
+# This file does three simple things:
+# 1. Loads temperature and precipitation data from combined_data.csv
+# 2. Works out which Nyoongar season each row belongs to (based on the month)
+# 3. Gives you simple functions to get useful info back out (averages, totals)
 
-You can import this file into your app later and just call the functions.
-"""
+# You can import this file into your app later and just call the functions.
+#
 
 import csv
 
@@ -26,9 +26,8 @@ SEASON_MONTHS = {
 
 def get_season_for_month(month_number):
     """
-    Given a month number (1-12), return which season it belongs to.
-    Returns None if the month isn't in any of your three chosen seasons.
-    """
+    #Given a month number (1-12), return which season it belongs to.
+    #Returns None if the month isn't in any of your three chosen seasons.    """
     for season_name, months in SEASON_MONTHS.items():
         if month_number in months:
             return season_name
