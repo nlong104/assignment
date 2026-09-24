@@ -80,3 +80,6 @@ print(data.shape)
 # Year, Month, Temperature and Precipitation
 print("\nColumn names:")
 print(data.columns)
+
+# Save the combined dataset as a new CSV file
+data.to_csv("data/combined_data.csv", index=False)
