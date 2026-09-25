@@ -8,9 +8,9 @@ weather_data.py
 
 # You can import this file into your app later and just call the functions.
 #
+"""
 
 import csv
-
 
 # ---------------------------------------------------------------------------
 # STEP 1: Define your seasons
@@ -23,16 +23,15 @@ SEASON_MONTHS = {
     "Birak": [12, 1],        # December-January
 }
 
-
 def get_season_for_month(month_number):
     """
-    #Given a month number (1-12), return which season it belongs to.
-    #Returns None if the month isn't in any of your three chosen seasons.    """
+    Given a month number (1-12), return which season it belongs to.
+    Returns None if the month isn't in any of your three chosen seasons.
+    """
     for season_name, months in SEASON_MONTHS.items():
         if month_number in months:
             return season_name
-    return None # If we reach this line, no season matched this month
-
+    return None  # If we reach this line, no season matched this month
 
 # ---------------------------------------------------------------------------
 # STEP 2: Load the data from file
