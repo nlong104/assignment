@@ -9,7 +9,7 @@
     .screen.active { display: block; }
     body {
   font-family: 'Nunito', sans-serif;
-  background: #ffe77a;
+  background: #fdd8e8;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -22,14 +22,14 @@
     }
 
     button {
-  border: none;
+  border: 2px solid rgb(53, 53, 53);
   border-radius: 12px;
   padding: 12px 20px;
   font-weight: 700;
   font-family: 'Nunito', sans-serif;
   font-size: 1rem;
-  background: #6394d9;
-  color: white;
+  background: white;
+  color: black;
   cursor: pointer;
 }
 
@@ -38,9 +38,9 @@ button:hover {
 }
 
 :root {
-  --birak-color: #E4562A;
-  --kambarang-color: #F2A93B;
-  --makuru-color: #69bf91;
+  --birak-color: #f9c0ae;
+  --kambarang-color: #fae5b3;
+  --makuru-color: #d2f7f9;
 }
 
 #birak h1 { color: var(--birak-color); }
@@ -52,15 +52,22 @@ button:hover {
 #makuru h1 { color: var(--makuru-color); }
 #makuru button { background: var(--makuru-color); }
 
+/* ...existing code... */
+.screen:not(#home) button {
+  border-color: rgb(1, 1, 41);
+  color: rgb(1, 1, 41);
+}
+/* ...existing code... */
+
 body.birak-bg {
-    background: #e37272
+    background: #f9c0ae
 }
 
 body.kambarang-bg {
-    background: #ff7fdf
+    background: #fae5b3
 }
 body.makuru-bg {
-    background: #899bf3
+    background: #d2f7f9
 }
     </style>
 </head>
