@@ -14,26 +14,5 @@ weather_data.py:
         get_all_season_summaries(records) — same, but for every mapped season.
 
 
+combining_data.py:
 
-# this is from the frontend page and this was AI for now:
- body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1em 0;
-            text-align: center;
-        }
-        main {
-            padding: 2em;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            line-height: 1.6;
-        }

@@ -1,29 +1,107 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Placeholder name for the website: Family activities in relation to Noongar Seasons</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nyoongar Seasons</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1em 0;
-            text-align: center;
-        }
-        main {
-            padding: 2em;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            line-height: 1.6;
-        }
-</style>
-    </head>
-    <body></body>
+    .screen { display: none; }
+    .screen.active { display: block; }
+    </style>
+</head>
+<body>
+
+ <div id="home" class="screen active">
+    <h1>Activities in the Nyoongar Seasons</h1>
+    <h2>The Nyoongar Calender has six seasons, although we are focusing on three of them.</h2>
+    <p>These are: Kambarang, Birak and Makuru</p>
+    <h2>Pick a season to explore:</h2>
+
+    <button onclick="showScreen('birak')">Birak</button>
+    <button onclick="showScreen('kambarang')">Kambarang</button>
+    <button onclick="showScreen('makuru')">Makuru</button>
+</div>
+
+    <div id="kambarang" class="screen">
+    <h2>Kambarang</h2>
+    <h3>October to November</h3>
+    <p>The season of wildflowers. Kambarang is a time of renewal and growth, when the land is covered in colorful blooms. The days are becoming warmer and drier</p>
+
+    <h3>Free or cheap activities to do during Kambarang</h3>
+    <ul>
+        <li>Cycling around Perth: Matilda Bay, Kings Park, Coastal cycle paths.</li>
+        <li>Elizabeth Quay: Enjoy the waterfront, public art, and events.</li>
+        <li>South Perth Foreshore</li>
+        <li>Wanneroo Botanical Gardens</li>
+        <li>Kings Park walks</li>
+        <li>Bold Park trail walks</li>
+        <li>Perry Lakes skate park</li>
+    </ul>
+    <h3>Paid activities to do during Kambarang</h3>
+    <ul>
+        <li>Perth Zoo: Explore the diverse wildlife and exhibits.</li>
+        <li>Daytrip to Rottnest Island</li>
+        <li>Mini golf at Wembley Golf Course</li>
+    </ul>
+    <button onclick="showScreen('home')">&larr; Back</button>
+    </div>
+
+    <div id="birak" class="screen">
+    <h2>Birak</h2>
+    <h3>December to January</h3>
+    <p>The season of fire. Birak is a time of heat and dryness, where the Sea Breeze brings relief from the scorching sun. It is a time for outdoor activities and enjoying the natural beauty of the land.</p>
+
+    <h3>Free or cheap activities to do during Birak</h3>
+    <ul>
+        <li>Beaches: Cottesloe Beach, Omeo Wreck, Mettam's Pool, Hillary's Boat Harbour</li>
+        <li>Kings Park walks</li>
+        <li>Caversham Wildlife Park</li>
+        <li>Fremantle Markets</li>
+        <li>Local Swimming Pools</li>
+    </ul>
+    <h3>Paid activities to do during Birak</h3>
+    <ul>
+        <li>Adventure World: Enjoy thrilling rides and attractions.</li>
+        <li>Daytrip to Rottnest Island</li>
+        <li>Outback Splash</li>
+        <li>Perth Wildlife Encounters dolphin swim (Rockingham)</li>
+        <li>AQWA</li>
+    </ul>
+    <button onclick="showScreen('home')">&larr; Back</button>
+    </div>
+
+    <div id="makuru" class="screen">
+    <h2>Makuru</h2>
+    <h3>June to July</h3>
+    <p>The season of the cold and wet. Makuru is a time of rain and cooler temperatures, where the land is nourished and the rivers flow. It is a time for indoor activities and enjoying the warmth of home.</p>
+    <h3>Free or cheap activities to do during Makuru</h3>
+    <ul>
+        <li>Visit the Perth Cultural Centre: Explore museums, galleries, and libraries.</li>
+        <li>Scarborough Markets</li>
+        <li>Maritime Museum: Free for kids under 15</li>
+        <li>Whale Watching - From the shore</li>
+        <li>Fremantle Markets</li>
+        <li>Walks in Perth Hills</li>
+        <li>Scarborough Beach whale playground</li>
+    </ul>
+    <h3>Paid activities to do during Makuru</h3>
+    <ul>
+        <li>Scitech</li>
+        <li>WA Museum</li>
+        <li>Bounce</li>
+        <li>Ice Skating</li>
+        <li>Cinema</li>
+        <li>Ten Pin Bowling</li>
+        <li>Fremantle Prison</li>
+    </ul>
+    <button onclick="showScreen('home')">&larr; Back</button>
+    </div>
+
+    <script>
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
