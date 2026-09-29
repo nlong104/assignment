@@ -16,3 +16,36 @@ weather_data.py:
 
 combining_data.py:
 
+# for the frontend button change:
+/* ...existing code... */
+.screen:not(#home) button {
+  border-color: navy;
+  color: navy;
+}
+/* ...existing code... */
+
+# to add images to the border of the whole application
+/* Full-page decorative borders */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 65px;
+
+    background: url("images/Border-image.jpg") center / cover no-repeat;
+
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Left border */
+body::before {
+    left: 0;
+}
+
+/* Right border */
+body::after {
+    right: 0;
+}
