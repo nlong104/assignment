@@ -10,13 +10,16 @@
 </head>
 <body>
 
-    <button onclick="showScreen('birak')">Birak</button>
-    <button onclick="showScreen('kambarang')">Kambarang</button>
-    <button onclick="showScreen('makuru')">Makuru</button>
-
+ <div id="home" class="screen active">
     <h1>Activities in the Nyoongar Seasons</h1>
     <h2>The Nyoongar Calender has six seasons, although we are focusing on three of them.</h2>
     <p>These are: Kambarang, Birak and Makuru</p>
+    <h2>Pick a season to explore:</h2>
+
+    <button onclick="showScreen('birak')">Birak</button>
+    <button onclick="showScreen('kambarang')">Kambarang</button>
+    <button onclick="showScreen('makuru')">Makuru</button>
+</div>
 
     <div id="kambarang" class="screen">
     <h2>Kambarang</h2>
@@ -41,7 +44,7 @@
     </ul>
     </div>
 
-    <div id="birak" class="screen active">
+    <div id="birak" class="screen">
     <h2>Birak</h2>
     <h3>December to January</h3>
     <p>The season of fire. Birak is a time of heat and dryness, where the Sea Breeze brings relief from the scorching sun. It is a time for outdoor activities and enjoying the natural beauty of the land.</p>
@@ -96,5 +99,6 @@
       document.getElementById(id).classList.add('active');
     }
   </script>
+
 </body>
 </html>
