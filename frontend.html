@@ -9,7 +9,7 @@
     .screen.active { display: block; }
     body {
   font-family: 'Nunito', sans-serif;
-  background: #f6c8e3;
+  background: #ffe77a;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -51,6 +51,17 @@ button:hover {
 
 #makuru h1 { color: var(--makuru-color); }
 #makuru button { background: var(--makuru-color); }
+
+body.birak-bg {
+    background: #e37272
+}
+
+body.kambarang-bg {
+    background: #ff7fdf
+}
+body.makuru-bg {
+    background: #899bf3
+}
     </style>
 </head>
 <body>
@@ -148,6 +159,11 @@ button:hover {
     function showScreen(id) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
+
+        document.body.classList.remove('birak-bg', 'kambarang-bg', 'makuru-bg');
+  if (id === 'birak') document.body.classList.add('birak-bg');
+  if (id === 'kambarang') document.body.classList.add('kambarang-bg');
+  if (id === 'makuru') document.body.classList.add('makuru-bg');
     }
   </script>
 
