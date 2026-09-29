@@ -3,12 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Nyoongar Seasons</title>
-    <style>
+     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
     .screen { display: none; }
     .screen.active { display: block; }
+    body {
+  font-family: 'Nunito', sans-serif;
+  background: #f6c8e3;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px;
+    }
+
+    .app {
+    max-width: 420px;
+    width: 100%;
+    }
+
+    button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  background: #6394d9;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+:root {
+  --birak-color: #E4562A;
+  --kambarang-color: #F2A93B;
+  --makuru-color: #69bf91;
+}
+
+#birak h1 { color: var(--birak-color); }
+#birak button { background: var(--birak-color); }
+
+#kambarang h1 { color: var(--kambarang-color); }
+#kambarang button { background: var(--kambarang-color); }
+
+#makuru h1 { color: var(--makuru-color); }
+#makuru button { background: var(--makuru-color); }
     </style>
 </head>
 <body>
+
+<div class="app">
 
  <div id="home" class="screen active">
     <h1>Activities in the Nyoongar Seasons</h1>
@@ -95,6 +142,7 @@
     </ul>
     <button onclick="showScreen('home')">&larr; Back</button>
     </div>
+</div>
 
     <script>
     function showScreen(id) {
