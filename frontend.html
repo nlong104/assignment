@@ -43,6 +43,39 @@ button:hover {
   --makuru-color: #d2f7f9;
 }
 
+# home {
+    position: relative;
+}
+
+#home::before,
+#home::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75px;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+}
+
+#home::before {
+   left: -95px;
+   background-image: url("images/Border-image.jpg");
+}
+#home::after {
+    right: -95px;
+    background-image: url("images/Border-image.jpg");
+}
+
+@media (max-width: 1200px) {
+    #home::before,
+    #home::after {
+        display: none;       
+}
+}
+
 #birak h1 { color: var(--birak-color); }
 #birak button { background: var(--birak-color); }
 
