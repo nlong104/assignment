@@ -43,30 +43,29 @@ button:hover {
   --makuru-color: #d2f7f9;
 }
 
-#home {
-    position: relative;
-}
-
-#home::before,
-#home::after {
+/* Full-page decorative borders */
+body::before,
+body::after {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
-    left: 0;
     width: 65px;
-    border-radius: 12px;
-    background-image: url("images/Border-image.jpg") center / cover no-repeat;
-    background-size: cover;
-    background-position: center;
+
+    background: url("images/Border-image.jpg") center / cover no-repeat;
+
     pointer-events: none;
+    z-index: 10;
 }
 
-#home::before {
-   left: -80px;
+/* Left border */
+body::before {
+    left: 0;
 }
-#home::after {
-    right: -80px;
+
+/* Right border */
+body::after {
+    right: 0;
 }
 
 
