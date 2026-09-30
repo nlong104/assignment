@@ -31,4 +31,5 @@ plt.xticks(range(0, 12), labels=["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"
 plt.subplots_adjust(left=0.15, right=0.95, top=0.9, bottom=0.15) # making the charts centred in the image
 plt.savefig("average_monthly_precipitation.png", facecolor="#fdd8e8") # saves the chart to a file, and sets the background colour of the saved image
 
-print("Saved both charts")
+
+print("Saved charts")
