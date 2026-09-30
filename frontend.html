@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Nyoongar Seasons</title>
-     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"> 
   <style>
     .screen { display: none; }
     .screen.active { display: block; }
@@ -96,8 +96,20 @@ body.makuru-bg {
     background: #d2f7f9
 }
 
+/* changing image size */
 img {
   max-width: 500px;
+  width: 100%;
+}
+
+/* making both charts appear side by side on larger screens */
+.chart-row {
+  display: flex;
+  gap: 12px;
+}
+
+.chart-row img {
+  max-width: 50%;
   width: 100%;
 }
     </style>
@@ -111,8 +123,10 @@ img {
     <h2>Of the six Nyoongar Calender seasons, 3 are the main focus for this app.</h2>
     <p>These are: Kambarang, Birak and Makuru</p>
 
-    
-    <img src="Data/average_monthly_temperature.png" alt="Average Monthly Temperature Chart">
+    <div class="chart-row">
+        <img src="Data/average_monthly_temperature.png" alt="Average Monthly Temperature Chart">
+        <img src="Data/average_monthly_precipitation.png" alt="Average Monthly Precipitation Chart">
+    </div>
 
     <h2>Pick a season to explore:</h2>
     <button onclick="showScreen('birak')">Birak</button>
