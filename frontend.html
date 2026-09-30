@@ -112,6 +112,28 @@ img {
   max-width: 50%;
   width: 100%;
 }
+
+/* centring the season buttons on the home page */
+.season-picker {
+    text-align: center;
+}
+
+/* centring each heading */
+.home-text {
+    text-align: center;
+}   
+
+.birak-text {
+    text-align: center;
+}
+
+.kambarang-text {
+    text-align: center;
+}
+
+.makuru-text {
+    text-align: center;
+}
     </style>
 </head>
 <body>
@@ -119,25 +141,37 @@ img {
 <div class="app">
 
  <div id="home" class="screen active">
+    <div class="home-text"> 
     <h1>Family activities in the Nyoongar Seasons</h1>
+    </div>
     <h2>Of the six Nyoongar Calender seasons, 3 are the main focus for this app, based on their differences from each other, and their alignment with the school holidays in Australia.</h2>
-    <p>These are: Birak (Summer), Kambarang (Spring) and Makuru (Winter)</p>
+    <p>These are: <strong>Birak</strong>(Summer), <strong>Kambarang</strong>(Spring) and <strong>Makuru</strong>(Winter)</p>
+
+    <div class="season-picker">
+     <h2>Pick a season to explore:</h2>
+    <button onclick="showScreen('birak')">Birak</button>
+    <button onclick="showScreen('kambarang')">Kambarang</button>
+    <button onclick="showScreen('makuru')">Makuru</button>
+    </div>
+
+    <p>The Nyoongar region is the south-western region of Western Australia. This includes the Perth metropolitan area and surrounding regions, so these activities are mainly focused in the Perth area.</p>
+    <p>To understand which activities are suitable for each season, it is important to consider the weather patterns and natural occurrences of each time of year. This includes temperature and rainfall patterns.</p>
 
     <div class="chart-row">
         <img src="Data/average_monthly_temperature.png" alt="Average Monthly Temperature Chart">
         <img src="Data/average_monthly_precipitation.png" alt="Average Monthly Precipitation Chart">
     </div>
 
-    <h2>Pick a season to explore:</h2>
-    <button onclick="showScreen('birak')">Birak</button>
-    <button onclick="showScreen('kambarang')">Kambarang</button>
-    <button onclick="showScreen('makuru')">Makuru</button>
 </div>
 
     <div id="kambarang" class="screen">
+    <div class="kambarang-text">
     <h2>Kambarang</h2>
     <h3>October to November</h3>
+    </div>
     <p>The season of wildflowers. Kambarang is a time of renewal and growth, when the land is covered in colorful blooms. The days are becoming warmer and drier</p>
+    <p>Average Temperature: 25.12°C</p>
+    <p>Average Precipitation: 32.16mm</p>
 
     <h3>Kambarang activities to do on a budget:</h3>
     <ul>
@@ -160,13 +194,17 @@ img {
     </div>
 
     <div id="birak" class="screen">
-    <h2>Birak</h2>
-    <h3>December to January</h3>
+        <div class="birak-text">
+        <h2>Birak</h2>
+        <h3>December to January</h3>
+        </div>
     <p>The season of fire. Birak is a time of heat and dryness, where the Sea Breeze brings relief from the scorching sun. It's a time for outdoor activities and enjoying the natural beauty of the land.</p>
+    <p>Average Temperature: 30.53°C</p>
+    <p>Average Precipitation: 12.9mm</p>
 
     <h3>Birak activities to do on a budget:</h3>
     <ul>
-        <li><strong>Beaches:</strong> Cottesloe Beach, Omeo Wreck, Mettam's Pool, Hillary's Boat Harbour, and more for swimmming, picnicing, and having fun with the family.</li>
+        <li><strong>Beaches:</strong> Cottesloe Beach, Omeo Wreck, Mettam's Pool, Hillary's Boat Harbour, and more for swimming, picnicing, and having fun with the family.</li>
         <li><strong>Kings Park walks:</strong> Visit Poolgarla family area, Rio Tinto Naturescape, Fraser Ave Precinct for a picnic, walk through the trails in the Botanic Gardens, visit the May Driver Parkland with the dinosaur statues, and walk through the numerous trails in Kings Park.</li>
         <li><strong>Go down to the Swan River:</strong> Go for a swim at any of the established swimming spots such as Matilda Bay, Point Walter and more. </li>
         <li><strong>Fremantle Markets:</strong> Visit the oldest market in Australia, open Fridays, Saturdays and Sundays, eat food and go shopping. </li>
@@ -186,9 +224,13 @@ img {
     </div>
 
     <div id="makuru" class="screen">
+    <div class="makuru-text">
     <h2>Makuru</h2>
     <h3>June to July</h3>
+    </div>
     <p>The cold and wet season. Makuru is a time of rain and cooler temperatures, where the land rejuvenates and the rivers flow. It is a time for indoor activities and enjoying the warmth of home.</p>
+    <p>Average Temperature: 19.0°C</p>
+    <p>Average Precipitation: 136.89mm</p>
     <h3>Makuru activities to do on a budget:</h3>
     <ul>
         <li><strong>Visit the Perth Cultural Centre:</strong> Explore museums, galleries, and libraries.</li>
