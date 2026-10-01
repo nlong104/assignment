@@ -134,6 +134,65 @@ img {
 .makuru-text {
     text-align: center;
 }
+
+.site-rating {
+    margin: 36px 0 16px;
+    padding: 20px 12px;
+    border-top: 2px solid #7b3039;
+    text-align: center;
+}
+
+.site-rating h2 {
+    margin-bottom: 16px;
+    color: #7b3039;
+}
+
+.rating-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.rating-face {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 88px;
+    padding: 10px;
+    border-color: #7b3039;
+    background: white;
+}
+
+.rating-face span:first-child {
+    font-size: 2rem;
+}
+
+.rating-face[aria-pressed="true"] {
+    outline: 3px solid #7b3039;
+    outline-offset: 2px;
+}
+
+#rating-status {
+    min-height: 1.5em;
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    body::before,
+    body::after {
+        width: 20px;
+    }
+
+    .chart-row {
+        flex-direction: column;
+    }
+
+    .chart-row img {
+        max-width: 100%;
+    }
+}
     </style>
 </head>
 <body>
@@ -161,6 +220,18 @@ img {
         <img src="Data/average_monthly_temperature.png" alt="Average Monthly Temperature Chart">
         <img src="Data/average_monthly_precipitation.png" alt="Average Monthly Precipitation Chart">
     </div>
+
+    <section class="site-rating" aria-labelledby="rating-title">
+        <h2 id="rating-title">How would you rate this site?</h2>
+        <div class="rating-options" role="group" aria-label="Choose a rating from very unhappy to very happy">
+            <button class="rating-face" type="button" data-rating="1" aria-label="Very unhappy" aria-pressed="false"><span aria-hidden="true">😞</span><span>Very unhappy</span></button>
+            <button class="rating-face" type="button" data-rating="2" aria-label="Unhappy" aria-pressed="false"><span aria-hidden="true">🙁</span><span>Unhappy</span></button>
+            <button class="rating-face" type="button" data-rating="3" aria-label="Neutral" aria-pressed="false"><span aria-hidden="true">😐</span><span>Neutral</span></button>
+            <button class="rating-face" type="button" data-rating="4" aria-label="Happy" aria-pressed="false"><span aria-hidden="true">🙂</span><span>Happy</span></button>
+            <button class="rating-face" type="button" data-rating="5" aria-label="Very happy" aria-pressed="false"><span aria-hidden="true">😄</span><span>Very happy</span></button>
+        </div>
+        <p id="rating-status" role="status" aria-live="polite"></p>
+    </section>
 
 </div>
 
@@ -271,7 +342,39 @@ img {
   if (id === 'birak') document.body.classList.add('birak-bg');
   if (id === 'kambarang') document.body.classList.add('kambarang-bg');
   if (id === 'makuru') document.body.classList.add('makuru-bg');
+<<<<<<< HEAD
 }
+=======
+    }
+
+        document.querySelectorAll('.rating-face').forEach(button => {
+            button.addEventListener('click', async () => {
+                const status = document.getElementById('rating-status');
+                const ratingButtons = document.querySelectorAll('.rating-face');
+                ratingButtons.forEach(item => { item.disabled = true; });
+                status.textContent = 'Saving your rating...';
+
+                try {
+                    const response = await fetch('/feedback', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ rating: Number(button.dataset.rating) })
+                    });
+                    const result = await response.json();
+                    if (!response.ok) throw new Error(result.error || 'Unable to save your rating.');
+
+                    ratingButtons.forEach(item => {
+                        item.setAttribute('aria-pressed', String(item === button));
+                    });
+                    status.textContent = result.message;
+                } catch (error) {
+                    status.textContent = error.message || 'Unable to save your rating. Please try again.';
+                } finally {
+                    ratingButtons.forEach(item => { item.disabled = false; });
+                }
+            });
+        });
+>>>>>>> 96d2b5c7a95c8a0f45913ed1cac4159294a11781
   </script>
 
 </body>
