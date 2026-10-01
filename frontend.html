@@ -180,6 +180,145 @@ img {
     margin-bottom: 0;
 }
 
+#birak ul,
+#kambarang ul,
+#makuru ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+#birak li,
+#kambarang li,
+#makuru li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.activity-copy {
+    flex: 1;
+}
+
+.activity-toggle {
+    display: inline-grid;
+    flex: 0 0 16px;
+    place-items: center;
+    width: 16px;
+    height: 16px;
+    margin-top: 4px;
+    padding: 0;
+    border: 1px solid #111;
+    border-radius: 50%;
+    background: #111;
+    color: white;
+    cursor: pointer;
+}
+
+#birak .activity-toggle,
+#kambarang .activity-toggle,
+#makuru .activity-toggle {
+    border-color: #111;
+    background: #111;
+}
+
+.activity-toggle:hover {
+    opacity: 0.75;
+}
+
+.activity-toggle:focus-visible {
+    outline: 3px solid #7b3039;
+    outline-offset: 3px;
+}
+
+.activity-toggle[aria-pressed="true"] {
+    border-color: #276749;
+    background: #276749;
+}
+
+#birak .activity-toggle[aria-pressed="true"],
+#kambarang .activity-toggle[aria-pressed="true"],
+#makuru .activity-toggle[aria-pressed="true"] {
+    border-color: #276749;
+    background: #276749;
+}
+
+.activity-toggle[aria-pressed="true"]::after {
+    content: "✓";
+    font-size: 11px;
+    line-height: 1;
+}
+
+.account-page {
+    margin-top: 24px;
+}
+
+.account-forms {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin: 24px 0;
+}
+
+.account-form {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    padding: 18px;
+    border: 1px solid #7b3039;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.account-form label {
+    font-weight: 700;
+}
+
+.account-form input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    font: inherit;
+}
+
+.account-form button {
+    justify-self: start;
+    border-color: #7b3039;
+    background: white;
+}
+
+.my-activity-button {
+    position: fixed;
+    top: 12px;
+    right: 78px;
+    z-index: 11;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.account-status {
+    min-height: 1.5em;
+}
+
+#activity-records {
+    padding-left: 0;
+    list-style: none;
+}
+
+#activity-records li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(53, 53, 53, 0.3);
+}
+
+#activity-records time {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.9rem;
+}
+
 @media (max-width: 600px) {
     body::before,
     body::after {
@@ -193,6 +332,14 @@ img {
     .chart-row img {
         max-width: 100%;
     }
+
+    .account-forms {
+        grid-template-columns: 1fr;
+    }
+
+    .my-activity-button {
+        right: 28px;
+    }
 }
     </style>
 </head>
@@ -204,6 +351,7 @@ img {
     <div class="home-text"> 
     <h1>Family activities in the Nyoongar Seasons</h1>
     </div>
+    <button class="my-activity-button" type="button" onclick="showScreen('account')">My Activity</button>
     <h2>Of the six Nyoongar Calender seasons, 3 are the main focus for this app, based on their differences from each other, and their alignment with the school holidays in Australia.</h2>
     <p>These are: <strong>Birak</strong>(Summer), <strong>Kambarang</strong>(Spring) and <strong>Makuru</strong>(Winter)</p>
 
@@ -235,6 +383,44 @@ img {
     </section>
 
 </div>
+
+    <div id="account" class="screen">
+        <section class="account-page" aria-labelledby="account-title">
+            <button type="button" onclick="showScreen('home')">&larr; Back</button>
+            <h1 id="account-title">My activity</h1>
+            <div id="account-auth">
+                <p>Create an account or log in to keep your activity record.</p>
+                <div class="account-forms">
+                    <form id="register-form" class="account-form">
+                        <h2>Create account</h2>
+                        <label for="new-username">Username</label>
+                        <input id="new-username" name="username" type="text" autocomplete="username" minlength="3" maxlength="30" pattern="[A-Za-z0-9_]+" aria-describedby="new-username-help" required>
+                        <small id="new-username-help">Use 3–30 characters: letters, numbers, or underscores. No spaces.</small>
+                        <label for="new-password">Password</label>
+                        <input id="new-password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="1024" aria-describedby="new-password-help" required>
+                        <small id="new-password-help">Use 8–1024 characters. Passwords are case-sensitive.</small>
+                        <button type="submit">Create account</button>
+                    </form>
+                    <form id="login-form" class="account-form">
+                        <h2>Log in</h2>
+                        <p>Enter the username and password you used when you created your account.</p>
+                        <label for="login-username">Username</label>
+                        <input id="login-username" name="username" type="text" autocomplete="username" required>
+                        <label for="login-password">Password</label>
+                        <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+                        <button type="submit">Log in</button>
+                    </form>
+                </div>
+                <p id="account-auth-status" class="account-status" role="status" aria-live="polite"></p>
+            </div>
+            <div id="account-record" hidden>
+                <p>Logged in as <strong id="account-username"></strong></p>
+                <button id="logout-button" type="button">Log out</button>
+                <h2>Activities you have done</h2>
+                <ul id="activity-records"></ul>
+            </div>
+        </section>
+    </div>
 
     <div id="kambarang" class="screen">
     <div class="kambarang-text">
@@ -343,7 +529,189 @@ img {
   if (id === 'birak') document.body.classList.add('birak-bg');
   if (id === 'kambarang') document.body.classList.add('kambarang-bg');
   if (id === 'makuru') document.body.classList.add('makuru-bg');
+    if (id === 'account') loadAccountScreen();
+    if (['birak', 'kambarang', 'makuru'].includes(id)) loadActivityMarkers();
 }
+
+async function requestJson(url, options = {}) {
+    const response = await fetch(url, options);
+    const contentType = response.headers.get('content-type') || '';
+    let result = {};
+    if (contentType.includes('application/json')) {
+        result = await response.json();
+    } else if (!response.ok && [404, 405].includes(response.status)) {
+        throw new Error(`The running server does not support this request (HTTP ${response.status}). Restart the app and refresh the page.`);
+    } else if (!response.ok) {
+        throw new Error(`The server returned HTTP ${response.status}. Please try again.`);
+    } else {
+        throw new Error('The server returned an unexpected response. Restart the app and refresh the page.');
+    }
+    if (!response.ok) throw new Error(result.error || 'Something went wrong. Please try again.');
+    return result;
+}
+
+async function loadAccountScreen() {
+    const authPanel = document.getElementById('account-auth');
+    const recordPanel = document.getElementById('account-record');
+    const status = document.getElementById('account-auth-status');
+
+    try {
+        const account = await requestJson('/api/me');
+        authPanel.hidden = account.logged_in;
+        recordPanel.hidden = !account.logged_in;
+        if (!account.logged_in) return;
+
+        document.getElementById('account-username').textContent = account.username;
+        const records = await requestJson('/api/activities');
+        const list = document.getElementById('activity-records');
+        list.replaceChildren();
+        if (records.length === 0) {
+            const empty = document.createElement('li');
+            empty.textContent = 'Your completed activities will appear here.';
+            list.append(empty);
+            return;
+        }
+
+        records.forEach(record => {
+            const item = document.createElement('li');
+            const title = document.createElement('strong');
+            title.textContent = record.activity;
+            const season = document.createElement('span');
+            season.textContent = ` - ${record.season}`;
+            const date = document.createElement('time');
+            date.dateTime = record.done_at;
+            date.textContent = new Date(record.done_at).toLocaleString();
+            item.append(title, season, date);
+            list.append(item);
+        });
+    } catch (error) {
+        status.textContent = error.message;
+    }
+}
+
+function updateActivityMarker(item, record) {
+    const toggle = item.querySelector('.activity-toggle');
+    if (!toggle) return;
+    if (record) item.dataset.recordId = record.id;
+    else delete item.dataset.recordId;
+    toggle.setAttribute('aria-pressed', String(Boolean(record)));
+    toggle.setAttribute('aria-label', record
+        ? `Remove ${item.dataset.activityName} from my activity`
+        : `Record ${item.dataset.activityName} in my activity`);
+}
+
+async function loadActivityMarkers() {
+    try {
+        const records = await requestJson('/api/activities');
+        const recordsByKey = new Map(records.filter(record => record.activity_key)
+            .map(record => [record.activity_key, record]));
+        const legacyRecords = new Map();
+        records.filter(record => !record.activity_key).reverse().forEach(record => {
+            const key = `${record.season}\u0000${record.activity}`;
+            if (!legacyRecords.has(key)) legacyRecords.set(key, []);
+            legacyRecords.get(key).push(record);
+        });
+
+        document.querySelectorAll('#birak li[data-activity-key], #kambarang li[data-activity-key], #makuru li[data-activity-key]').forEach(item => {
+            const key = `${item.closest('.screen').id[0].toUpperCase()}${item.closest('.screen').id.slice(1)}\u0000${item.dataset.activityName}`;
+            const record = recordsByKey.get(item.dataset.activityKey) || legacyRecords.get(key)?.shift();
+            updateActivityMarker(item, record);
+        });
+    } catch (error) {
+        if (error.message.includes('log in')) {
+            document.querySelectorAll('#birak li[data-activity-key], #kambarang li[data-activity-key], #makuru li[data-activity-key]').forEach(item => updateActivityMarker(item, null));
+            return;
+        }
+    }
+}
+
+async function submitAccountForm(event, endpoint) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const status = document.getElementById('account-auth-status');
+    const submitButton = form.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    status.textContent = 'Please wait...';
+
+    try {
+        const credentials = Object.fromEntries(new FormData(form).entries());
+        await requestJson(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(credentials)
+        });
+        form.reset();
+        status.textContent = '';
+        await loadAccountScreen();
+    } catch (error) {
+        status.textContent = error.message;
+    } finally {
+        submitButton.disabled = false;
+    }
+}
+
+document.getElementById('register-form').addEventListener('submit', event => {
+    submitAccountForm(event, '/api/register');
+});
+
+document.getElementById('login-form').addEventListener('submit', event => {
+    submitAccountForm(event, '/api/login');
+});
+
+document.getElementById('logout-button').addEventListener('click', async () => {
+    await requestJson('/api/logout', { method: 'POST' });
+    await loadAccountScreen();
+});
+
+document.querySelectorAll('#birak li, #kambarang li, #makuru li').forEach((item, index) => {
+    const season = item.closest('.screen').id;
+    const activity = item.querySelector('strong')?.textContent.trim() || item.textContent.trim();
+    const activityKey = `${season}-${index + 1}`;
+    item.dataset.activityKey = activityKey;
+    item.dataset.activityName = activity;
+
+    const activityCopy = document.createElement('span');
+    activityCopy.className = 'activity-copy';
+    while (item.firstChild) activityCopy.append(item.firstChild);
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'activity-toggle';
+    toggle.setAttribute('aria-pressed', 'false');
+    toggle.setAttribute('aria-label', `Record ${activity} in my activity`);
+    item.append(toggle, activityCopy);
+
+    toggle.addEventListener('click', async () => {
+        if (toggle.disabled) return;
+        toggle.disabled = true;
+        try {
+            if (item.dataset.recordId) {
+                await requestJson(`/api/activities/${item.dataset.recordId}`, { method: 'DELETE' });
+                updateActivityMarker(item, null);
+            } else {
+                const record = await requestJson('/api/activities', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        activity,
+                        season: season[0].toUpperCase() + season.slice(1),
+                        activity_key: activityKey
+                    })
+                });
+                updateActivityMarker(item, record);
+            }
+        } catch (error) {
+            if (error.message.includes('log in')) {
+                showScreen('account');
+                await loadAccountScreen();
+                document.getElementById('account-auth-status').textContent = 'Create an account or log in to record this activity.';
+            } else {
+                window.alert(error.message);
+            }
+        } finally {
+            toggle.disabled = false;
+        }
+    });
+});
     
     
 
