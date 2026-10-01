@@ -208,6 +208,9 @@ def delete_activity(record_id):
 def home():
 	return send_from_directory(app.root_path, "frontend.html")
 
+@app.get("/app.js")
+def app_js():
+    return send_from_directory(app.root_path, "app.js")
 
 @app.get("/Data/<path:filename>")
 def data_file(filename):
