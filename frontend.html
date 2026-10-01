@@ -342,39 +342,7 @@ img {
   if (id === 'birak') document.body.classList.add('birak-bg');
   if (id === 'kambarang') document.body.classList.add('kambarang-bg');
   if (id === 'makuru') document.body.classList.add('makuru-bg');
-<<<<<<< HEAD
 }
-=======
-    }
-
-        document.querySelectorAll('.rating-face').forEach(button => {
-            button.addEventListener('click', async () => {
-                const status = document.getElementById('rating-status');
-                const ratingButtons = document.querySelectorAll('.rating-face');
-                ratingButtons.forEach(item => { item.disabled = true; });
-                status.textContent = 'Saving your rating...';
-
-                try {
-                    const response = await fetch('/feedback', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ rating: Number(button.dataset.rating) })
-                    });
-                    const result = await response.json();
-                    if (!response.ok) throw new Error(result.error || 'Unable to save your rating.');
-
-                    ratingButtons.forEach(item => {
-                        item.setAttribute('aria-pressed', String(item === button));
-                    });
-                    status.textContent = result.message;
-                } catch (error) {
-                    status.textContent = error.message || 'Unable to save your rating. Please try again.';
-                } finally {
-                    ratingButtons.forEach(item => { item.disabled = false; });
-                }
-            });
-        });
->>>>>>> 96d2b5c7a95c8a0f45913ed1cac4159294a11781
   </script>
 
 </body>
