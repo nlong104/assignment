@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 from flask import Flask, jsonify, request, send_from_directory # tools taken from the Flask library
 app = Flask(__name__) # create the web application
 
+# feedback for the website 
 FEEDBACK_FILE = os.path.join(app.root_path, "feedback.csv")
 
 
