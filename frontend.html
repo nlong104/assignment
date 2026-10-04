@@ -112,6 +112,45 @@ img {
   max-width: 50%;
   width: 100%;
 }
+/*styling for the maps and map sections*/
+.map-section {
+    margin: 32px 0;
+}
+
+.map-intro {
+    max-width: 760px;
+    margin: 0 auto 18px;
+    text-align: center;
+}
+
+.map-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.map-row figure {
+    min-width: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.map-row img {
+    display: block;
+    width: 100%;
+    max-width: none;
+    aspect-ratio: 1.15 / 1;
+    object-fit: contain;
+}
+
+.map-row figcaption {
+    margin-top: 8px;
+    font-weight: 700;
+}
+
+.map-source {
+    font-size: 0.8rem;
+}
 
 /* centring the season buttons on the home page */
 .season-picker {
@@ -318,7 +357,7 @@ img {
     margin-top: 4px;
     font-size: 0.9rem;
 }
-
+/* charts and graphs styling */
 @media (max-width: 600px) {
     body::before,
     body::after {
@@ -331,6 +370,10 @@ img {
 
     .chart-row img {
         max-width: 100%;
+    }
+
+    .map-row {
+        grid-template-columns: 1fr;
     }
 
     .account-forms {
@@ -367,11 +410,30 @@ img {
     <p>To use the activity log, simply click on the dot point of the activity you want to log, and it will add it to your account's activity log.</p>
     <p>The Nyoongar region is the south-western region of Western Australia. This includes the Perth metropolitan area and surrounding regions. Therefore, activities chosen are mainly focused in the Perth area from Rockingham to Hillarys.</p>
     <p>To understand which activities are suitable for each season, it is important to consider the weather patterns and natural occurrences of each time of year. This includes temperature and rainfall patterns:</p>
-<!-- Charts for temperature and precipitation  -->
+<!-- Charts for temperature and precipitation, as well as maps  -->
     <div class="chart-row">
         <img src="Data/average_monthly_temperature.png" alt="Average Monthly Temperature Chart">
         <img src="Data/average_monthly_precipitation.png" alt="Average Monthly Precipitation Chart">
     </div>
+    <section class="map-section" aria-labelledby="map-heading">
+        <div class="map-intro">
+            <h2 id="map-heading">The Noongar Regions enclosed in our study area</h2>
+            <p>These maps show the Whadjuk Noongar and Gnaala Karla Booja regions. These are the regions owned by the Indigenous people of Australia in which our activity areas are located (Hillarys to Rockingham).</p>
+        </div>
+        <div class="map-row">
+            <figure>
+              <img src="images/whadjuk%20noongar%20map.png" alt="Map showing Whadjuk Country around Perth">
+              <figcaption>Whadjuk Noongar Area Map</figcaption>
+            </figure>
+            <figure>
+              <img src="images/G.K.B%20noongar%20map.png" alt="Map showing the broader Noongar region in south-western Western Australia">
+              <figcaption>Gnaala Karla Booja Noongar Map</figcaption>
+            </figure>
+        </div>
+                <p class="map-source">Source: https://www.wa.gov.au/government/publications/maps-of-noongar-native-title-agreement-groups-the-settlement</p>
+
+    </section>
+
 <!-- rating selection for the website -->
     <section class="site-rating" aria-labelledby="rating-title">
         <h2 id="rating-title">How would you rate this site?</h2>
