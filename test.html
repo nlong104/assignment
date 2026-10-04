@@ -14,6 +14,7 @@
 
   <script src="app.js"></script>
   <script>
+    // reusable assertion function for testing that compares actual and expected values and logs the result
     function assertEqual(actual, expected, testName) {
       if (actual === expected) {
         console.log(`PASS: ${testName}`);
@@ -22,24 +23,24 @@
       }
     }
 
-    // Test 1: Home screen is active by default
+    // Test 1: Home screen is active by default - tests whether the home div has the 'active' class when the page loads
     showScreen('home');
     assertEqual(document.getElementById('home').classList.contains('active'), true, 'home screen is active by default');
 
-    // Test 2: Switching to a valid screen activates it
+    // Test 2: Switching to a valid screen activates it - tests whether the birak div has the 'active' class after calling showScreen('birak')
     showScreen('birak');
     assertEqual(document.getElementById('birak').classList.contains('active'), true, 'birak becomes active when selected');
 
-    // Test 3: Switching away removes the old active class
+    // Test 3: Switching away removes the old active class - tests whether the birak div loses the 'active' class after switching to kambarang
     showScreen('kambarang');
     assertEqual(document.getElementById('birak').classList.contains('active'), false, 'birak loses active when switching to kambarang');
 
-    // Test 4: Only one screen is ever active at a time
+    // Test 4: Only one screen is ever active at a time - tests whether only one div has the 'active' class after switching to makuru
     showScreen('makuru');
     const activeScreens = document.querySelectorAll('.screen.active');
     assertEqual(activeScreens.length, 1, 'exactly one screen is active at a time');
 
-    // Test 5: An invalid season id doesn't crash the app
+    // Test 5: An invalid season id doesn't crash the app - tests whether calling showScreen with an invalid id throws an error or not
     try {
     showScreen('doesnotexist');
     assertEqual(true, true, 'invalid id does not crash the app');
