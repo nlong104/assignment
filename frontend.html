@@ -384,6 +384,80 @@ img {
         right: 28px;
     }
 }
+/* Birak image styling */
+.birak_image {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.birak_image figure {
+  flex: 1;
+  margin: 0;
+}
+
+.birak_image img {
+  width: 100%;
+  height: 400px;  /* fixed height for all images */
+  object-fit: cover;    /* fills the box and crops the overflow instead of stretching */
+}
+
+.birak-image-source {
+  flex-basis: 100%;   /* each source line takes its own full row under the images */
+  font-size: 0.8rem;
+  margin: 0 0 4px 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* Kambarang image styling */
+.kambarang_image {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.kambarang_image figure {
+  flex: 1;
+  margin: 0;
+}
+
+.kambarang_image img {
+  width: 100%;
+  height: 400px;  /* fixed height for all images */
+  object-fit: cover;    /* fills the box and crops the overflow instead of stretching */
+}
+
+.kambarang-image-source {
+  flex-basis: 100%;   /* each source line takes its own full row under the images */
+  font-size: 0.8rem;
+  margin: 0 0 4px 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* Makuru image styling */
+.makuru_image {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.makuru_image figure {
+  flex: 1;
+  margin: 0;
+}
+
+.makuru_image img {
+  width: 100%;
+  height: 400px;  /* fixed height for all images */
+  object-fit: cover;    /* fills the box and crops the overflow instead of stretching */
+}
+
+.makuru-image-source {
+  flex-basis: 100%;   /* each source line takes its own full row under the images */
+  font-size: 0.8rem;
+  margin: 0 0 4px 0 !important;
+  line-height: 1.2 !important;
+}
     </style>
 </head>
 <body>
@@ -412,7 +486,7 @@ img {
     <p>To understand which activities are suitable for each season, it is important to consider the weather patterns and natural occurrences of each time of year. This includes temperature and rainfall patterns:</p>
 <!-- Charts for temperature and precipitation, as well as maps  -->
     <div class="chart-row">
-        <img src="Data/average_monthly_temperature.png" alt="Average Monthly Temperature Chart">
+        <img src="Data/average_monthly_maximum_temperature.png" alt="Average Monthly Maximum Temperature Chart">
         <img src="Data/average_monthly_precipitation.png" alt="Average Monthly Precipitation Chart">
     </div>
     <section class="map-section" aria-labelledby="map-heading">
@@ -493,8 +567,23 @@ img {
     <h3>October to November</h3>
     </div>
     <p>The season of wildflowers. Kambarang is a time of renewal and growth, when the land is covered in colorful blooms. The days are becoming warmer and drier</p>
-    <p>Average Temperature: 25.12°C</p>
+    <p>Average Maximum Temperature: 25.12°C</p>
     <p>Average Precipitation: 32.16mm</p>
+
+    <div class="kambarang_image row">
+        <figure>
+            <img src="images/Kambarang-image-1.jpeg" alt="A photo of a wildflower field in Perth during the Kambarang season">
+        </figure>
+        <figure>
+            <img src="images/kambarang-image-2.jpg" alt="A photo of Perth Zoo">
+        </figure>
+        <figure>
+             <img src="images/kambarang-image-3.jpg" alt="A photo of Perth in the Kambarang season">
+        </figure>
+    </div>
+        <p class="kambarang-image-source">Source 1: https://www.instagram.com/p/DOnp11xk-Ej/</p>
+        <p class="kambarang-image-source">Source 2: https://buggybuddys.com.au/giraffe-close-encounters-at-perth-zoo/</p>
+        <p class="kambarang-image-source">Source 3: https://perthisok.com/best-of-wa/bold-park/</p>
 
     <h3>Kambarang activities to do on a budget:</h3>
     <ul>
@@ -522,8 +611,23 @@ img {
         <h3>December to January</h3>
         </div>
     <p>The season of fire. Birak is a time of heat and dryness, where the Sea Breeze brings relief from the scorching sun. It's a time for outdoor activities and enjoying the natural beauty of the land.</p>
-    <p>Average Temperature: 30.53°C</p>
+    <p>Average Maximum Temperature: 30.53°C</p>
     <p>Average Precipitation: 12.9mm</p>
+
+    <div class="birak_image row">
+        <figure>
+            <img src="images/Birak-image.jpg" alt="A photo of a beach in Perth during the Birak season">
+        </figure>
+        <figure>
+            <img src="images/Birak-image-2.jpeg" alt="A photo of a beach in Perth during the Birak season">
+        </figure>
+        <figure>
+            <img src="images/Birak-image-3.jpg" alt="A photo of adventure world in Perth during the Birak season">
+        </figure>
+    </div>
+        <p class="birak-image-source">Source 1: https://thewest.com.au/news/weather/perth-weather-perth-set-to-swelter-in-warmer-than-average-spring-temperatures-as-summer-comes-early--c-16539960</p>
+        <p class="birak-image-source">Source 2: https://www.destinationperth.com.au/blog/post/perth-weather-through-the-year/</p>
+        <p class="birak-image-source">Source 3: https://www.destinationperth.com.au/listing/adventure-world/14/</p>
 
     <h3>Birak activities to do on a budget:</h3>
     <ul>
@@ -552,8 +656,24 @@ img {
     <h3>June to July</h3>
     </div>
     <p>The cold and wet season. Makuru is a time of rain and cooler temperatures, where the land rejuvenates and the rivers flow. It is a time for indoor activities and enjoying the warmth of home.</p>
-    <p>Average Temperature: 19.0°C</p>
+    <p>Average Maximum Temperature: 19.0°C</p>
     <p>Average Precipitation: 136.89mm</p>
+
+    <div class="makuru_image row">
+        <figure>
+            <img src="images/makuru-image-1.jpg" alt="A photo of a lightning storm in Perth during the Makuru season">
+        </figure>
+        <figure>
+            <img src="images/makuru-image-2.jpg" alt="A photo of Scitech">
+        </figure>
+        <figure>
+            <img src="images/makuru-image-3.jpeg" alt="A photo of Fremantle Prison">
+        </figure>
+    </div>
+        <p class="makuru-image-source">Source 1: https://www.abc.net.au/news/2025-09-04/rainfall-records-tumble-in-wa-winter-data-and-photo-wrap/105704596</p>
+        <p class="makuru-image-source">Source 2: https://www.scitech.org.au/support/hire-an-exhibition/</p>
+        <p class="makuru-image-source">Source 3: https://fremantleprison.com.au</p>
+
     <h3>Makuru activities to do on a budget:</h3>
     <ul>
         <li><strong>Visit the Perth Cultural Centre:</strong> Explore museums, galleries, and libraries.</li>
