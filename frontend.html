@@ -20,7 +20,7 @@
     max-width: 1000px;
     width: 100%;
     }
-
+/* general button styling for the app */
     button {
   border: 2px solid rgb(53, 53, 53);
   border-radius: 12px;
@@ -68,7 +68,7 @@ body::after {
     right: 0;
 }
 
-
+/* Season-specific colors for headings and buttons */
 #birak h1 { color: var(--birak-color); }
 #birak button { background: var(--birak-color); }
 
@@ -111,6 +111,45 @@ img {
 .chart-row img {
   max-width: 50%;
   width: 100%;
+}
+/*styling for the maps and map sections*/
+.map-section {
+    margin: 32px 0;
+}
+
+.map-intro {
+    max-width: 760px;
+    margin: 0 auto 18px;
+    text-align: center;
+}
+
+.map-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.map-row figure {
+    min-width: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.map-row img {
+    display: block;
+    width: 100%;
+    max-width: none;
+    aspect-ratio: 1.15 / 1;
+    object-fit: contain;
+}
+
+.map-row figcaption {
+    margin-top: 8px;
+    font-weight: 700;
+}
+
+.map-source {
+    font-size: 0.8rem;
 }
 
 /* centring the season buttons on the home page */
@@ -214,7 +253,7 @@ img {
     color: white;
     cursor: pointer;
 }
-
+/* buttons for the activity page in the corner of each screen */
 #birak .activity-toggle,
 #kambarang .activity-toggle,
 #makuru .activity-toggle {
@@ -248,7 +287,7 @@ img {
     font-size: 11px;
     line-height: 1;
 }
-
+/* account page and styling */
 .account-page {
     margin-top: 24px;
 }
@@ -318,7 +357,7 @@ img {
     margin-top: 4px;
     font-size: 0.9rem;
 }
-
+/* charts and graphs styling */
 @media (max-width: 600px) {
     body::before,
     body::after {
@@ -333,6 +372,10 @@ img {
         max-width: 100%;
     }
 
+    .map-row {
+        grid-template-columns: 1fr;
+    }
+
     .account-forms {
         grid-template-columns: 1fr;
     }
@@ -345,6 +388,7 @@ img {
 </head>
 <body>
 
+<!-- home page info  -->
 <div class="app">
 
  <div id="home" class="screen active">
@@ -352,8 +396,8 @@ img {
     <h1>Family activities in the Nyoongar Seasons</h1>
     </div>
     <button class="my-activity-button" type="button" onclick="showScreen('account')">My Activity</button>
-    <h2>Of the six Nyoongar Calender seasons, 3 are the main focus for this app, based on their differences from each other, and their alignment with the school holidays in Australia.</h2>
-    <p>These are: <strong>Birak</strong>(Summer), <strong>Kambarang</strong>(Spring) and <strong>Makuru</strong>(Winter)</p>
+    <h2>Of the six Nyoongar Calender seasons, 3 are the main focus for this app, due to their differences and alignment with the school holidays in Australia.</h2>
+    <p>These are: <strong>Birak</strong> (Summer), <strong>Kambarang</strong> (Spring) and <strong>Makuru</strong> (Winter)</p>
 
     <div class="season-picker">
      <h2>Pick a season to explore:</h2>
@@ -362,66 +406,87 @@ img {
     <button onclick="showScreen('makuru')">Makuru</button>
     </div>
 
-    <p>The Nyoongar region is the south-western region of Western Australia. This includes the Perth metropolitan area and surrounding regions, so these activities are mainly focused in the Perth area.</p>
-    <p>To understand which activities are suitable for each season, it is important to consider the weather patterns and natural occurrences of each time of year. This includes temperature and rainfall patterns.</p>
-
+    <p>To keep a log of the activities you have done, click on the "My Activity" button in the top right hand corner, and create or log into an existing account.</p>
+    <p>To use the activity log, simply click on the dot point of the activity you want to log, and it will add it to your account's activity log.</p>
+    <p>The Nyoongar region is the south-western region of Western Australia. This includes the Perth metropolitan area and surrounding regions. Therefore, activities chosen are mainly focused in the Perth area from Rockingham to Hillarys.</p>
+    <p>To understand which activities are suitable for each season, it is important to consider the weather patterns and natural occurrences of each time of year. This includes temperature and rainfall patterns:</p>
+<!-- Charts for temperature and precipitation, as well as maps  -->
     <div class="chart-row">
         <img src="Data/average_monthly_temperature.png" alt="Average Monthly Temperature Chart">
         <img src="Data/average_monthly_precipitation.png" alt="Average Monthly Precipitation Chart">
     </div>
+    <section class="map-section" aria-labelledby="map-heading">
+        <div class="map-intro">
+            <h2 id="map-heading">The Noongar Regions enclosed in our study area</h2>
+            <p>These maps show the Whadjuk Noongar and Gnaala Karla Booja regions. These are the regions owned by the Indigenous people of Australia in which our activity areas are located (Hillarys to Rockingham).</p>
+        </div>
+        <div class="map-row">
+            <figure>
+              <img src="images/whadjuk%20noongar%20map.png" alt="Map showing Whadjuk Country around Perth">
+              <figcaption>Whadjuk Noongar Area Map</figcaption>
+            </figure>
+            <figure>
+              <img src="images/G.K.B%20noongar%20map.png" alt="Map showing the broader Noongar region in south-western Western Australia">
+              <figcaption>Gnaala Karla Booja Noongar Map</figcaption>
+            </figure>
+        </div>
+                <p class="map-source">Source: https://www.wa.gov.au/government/publications/maps-of-noongar-native-title-agreement-groups-the-settlement</p>
 
+    </section>
+
+<!-- rating selection for the website -->
     <section class="site-rating" aria-labelledby="rating-title">
         <h2 id="rating-title">How would you rate this site?</h2>
         <div class="rating-options" role="group" aria-label="Choose a rating from very unhappy to very happy">
-            <button class="rating-face" type="button" data-rating="1" aria-label="Very unhappy" aria-pressed="false"><span aria-hidden="true">😞</span><span>Very unhappy</span></button>
+            <button class="rating-face" type="button" data-rating="1" aria-label="Very Unhappy" aria-pressed="false"><span aria-hidden="true">😞</span><span>Very Unhappy</span></button>
             <button class="rating-face" type="button" data-rating="2" aria-label="Unhappy" aria-pressed="false"><span aria-hidden="true">🙁</span><span>Unhappy</span></button>
             <button class="rating-face" type="button" data-rating="3" aria-label="Neutral" aria-pressed="false"><span aria-hidden="true">😐</span><span>Neutral</span></button>
             <button class="rating-face" type="button" data-rating="4" aria-label="Happy" aria-pressed="false"><span aria-hidden="true">🙂</span><span>Happy</span></button>
-            <button class="rating-face" type="button" data-rating="5" aria-label="Very happy" aria-pressed="false"><span aria-hidden="true">😄</span><span>Very happy</span></button>
+            <button class="rating-face" type="button" data-rating="5" aria-label="Very Happy" aria-pressed="false"><span aria-hidden="true">😄</span><span>Very Happy</span></button>
         </div>
         <p id="rating-status" role="status" aria-live="polite"></p>
     </section>
 
 </div>
-
+<!-- account page info, the my activity page -->
     <div id="account" class="screen">
         <section class="account-page" aria-labelledby="account-title">
             <button type="button" onclick="showScreen('home')">&larr; Back</button>
             <h1 id="account-title">My activity</h1>
             <div id="account-auth">
-                <p>Create an account or log in to keep your activity record.</p>
+                <p>Create an Account or Log In to keep your Activity Record.</p>
                 <div class="account-forms">
                     <form id="register-form" class="account-form">
-                        <h2>Create account</h2>
+                        <h2>Create Account</h2>
                         <label for="new-username">Username</label>
                         <input id="new-username" name="username" type="text" autocomplete="username" minlength="3" maxlength="30" pattern="[A-Za-z0-9_]+" aria-describedby="new-username-help" required>
                         <small id="new-username-help">Use 3–30 characters: letters, numbers, or underscores. No spaces.</small>
                         <label for="new-password">Password</label>
                         <input id="new-password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="1024" aria-describedby="new-password-help" required>
                         <small id="new-password-help">Use 8–1024 characters. Passwords are case-sensitive.</small>
-                        <button type="submit">Create account</button>
+                        <button type="submit">Create Account</button>
                     </form>
                     <form id="login-form" class="account-form">
-                        <h2>Log in</h2>
-                        <p>Enter the username and password you used when you created your account.</p>
+                        <h2>Log In</h2>
+                        <p>Enter the Username and Password you used when you created your account.</p>
                         <label for="login-username">Username</label>
                         <input id="login-username" name="username" type="text" autocomplete="username" required>
                         <label for="login-password">Password</label>
                         <input id="login-password" name="password" type="password" autocomplete="current-password" required>
-                        <button type="submit">Log in</button>
+                        <button type="submit">Log In</button>
                     </form>
                 </div>
                 <p id="account-auth-status" class="account-status" role="status" aria-live="polite"></p>
             </div>
             <div id="account-record" hidden>
                 <p>Logged in as <strong id="account-username"></strong></p>
-                <button id="logout-button" type="button">Log out</button>
-                <h2>Activities you have done</h2>
+                <button id="logout-button" type="button">Log Out</button>
+                <h2>Activities you've done:</h2>
                 <ul id="activity-records"></ul>
             </div>
         </section>
     </div>
-
+<!-- Kambarang season page -->
     <div id="kambarang" class="screen">
     <div class="kambarang-text">
     <h2>Kambarang</h2>
@@ -450,7 +515,7 @@ img {
     </ul>
     <button onclick="showScreen('home')">&larr; Back</button>
     </div>
-
+<!-- Birak season page -->
     <div id="birak" class="screen">
         <div class="birak-text">
         <h2>Birak</h2>
@@ -480,7 +545,7 @@ img {
     </ul>
     <button onclick="showScreen('home')">&larr; Back</button>
     </div>
-
+<!-- Makuru season page -->
     <div id="makuru" class="screen">
     <div class="makuru-text">
     <h2>Makuru</h2>
@@ -512,7 +577,7 @@ img {
     <button onclick="showScreen('home')">&larr; Back</button>
     </div>
 </div>
-
+<!-- code for activity completion and display in account-->
 <script src="app.js"></script>
     <script>
     function showScreen(id) {
@@ -714,7 +779,7 @@ document.querySelectorAll('#birak li, #kambarang li, #makuru li').forEach((item,
     });
 });
     
-
+<!-- code for the rating system for the website -->
         document.querySelectorAll('.rating-face').forEach(button => {
             button.addEventListener('click', async () => {
                 const status = document.getElementById('rating-status');

@@ -49,3 +49,29 @@ body::before {
 body::after {
     right: 0;
 }
+
+# for the map inclusion in the home page
+
+.map-source {
+    font-size: 0.8rem;
+}
+
+  </div>
+    <section class="map-section" aria-labelledby="map-heading">
+        <div class="map-intro">
+            <h2 id="map-heading">The Noongar Regions enclosed in our study area</h2>
+            <p>These maps show the Whadjuk Noongar and Gnaala Karla Booja regions. These are the regions owned by the Indigenous people of Australia in which our activity areas are located (Hillarys to Rockingham).</p>
+        </div>
+        <div class="map-row">
+            <figure>
+              <img src="images/whadjuk%20noongar%20map.png" alt="Map showing Whadjuk Country around Perth">
+              <figcaption>Whadjuk Noongar Area Map</figcaption>
+            </figure>
+            <figure>
+              <img src="images/G.K.B%20noongar%20map.png" alt="Map showing the broader Noongar region in south-western Western Australia">
+              <figcaption>Gnaala Karla Booja Noongar Map</figcaption>
+            </figure>
+        </div>
+                <p class="map-source">Source: https://www.wa.gov.au/government/publications/maps-of-noongar-native-title-agreement-groups-the-settlement</p>
+
+    </section>
