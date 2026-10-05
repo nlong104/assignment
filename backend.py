@@ -15,11 +15,12 @@ app.config.update(
 )
 
 # feedback for the website 
-FEEDBACK_FILE = os.path.join(app.root_path, "feedback.csv")
-ACCOUNT_DB = os.path.join(app.root_path, "accounts.sqlite3")
+FEEDBACK_FILE = os.environ.get("FEEDBACK_FILE", os.path.join(app.root_path, "feedback.csv"))
+ACCOUNT_DB = os.environ.get("ACCOUNT_DB", os.path.join(app.root_path, "accounts.sqlite3"))
 
 
 def init_account_db():
+	os.makedirs(os.path.dirname(os.path.abspath(ACCOUNT_DB)), exist_ok=True)
 	with closing(sqlite3.connect(ACCOUNT_DB)) as database:
 		database.execute("PRAGMA foreign_keys = ON")
 		database.executescript("""
@@ -243,6 +244,7 @@ def save_feedback():
 		"label": labels[rating],
 	}
 	file_exists = os.path.exists(FEEDBACK_FILE) and os.path.getsize(FEEDBACK_FILE) > 0
+	os.makedirs(os.path.dirname(os.path.abspath(FEEDBACK_FILE)), exist_ok=True)
 
 	with open(FEEDBACK_FILE, "a", newline="", encoding="utf-8") as feedback_file:
 		writer = csv.DictWriter(feedback_file, fieldnames=record.keys())
@@ -254,5 +256,5 @@ def save_feedback():
 
 
 if __name__ == "__main__":
-	init_account_db()
-	app.run(port=8000)
+    init_account_db()
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
