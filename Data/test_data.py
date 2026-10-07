@@ -25,11 +25,9 @@ assert_equal(dec_1994_year, jan_1995_year, "Dec 1994 and Jan 1995 share the same
 sample_data = pd.DataFrame({"Temperature": [20, 30]})
 assert_equal(average_metric(sample_data, "Temperature"), 25, "average_metric() correctly averages 20 and 30 to 25")
 
-# Test 9: Color list length always matches bar count - checks that the length of the colors list is equal to the number of months (12), ensuring that there is a color assigned for each month in the chart
-month_names = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-season_lookup = data.groupby("Month")["Season"].first()
-colors = ["#BBBBBB" if season_lookup[m] == "Other" else "#23406B" for m in range(1, 13)]
-assert_equal(len(colors), len(month_names), "color list has exactly one entry per month")
+# Test 9: Monthly precipitation data has exactly one entry per month - checks that the monthly_avg_precip Series has exactly 12 entries, confirming that there are no duplicate or missing months in the precipitation data
+monthly_avg_precip = data.groupby("Month")["Precipitation"].mean()
+assert_equal(len(monthly_avg_precip), 12, "monthly precipitation data has exactly 12 months, no duplicates or gaps")
 
 # Test 10: Filtering for a season that doesn't exist returns empty, doesn't crash - checks that filtering the data for a season name that doesn't exist ("NotARealSeason") returns an empty DataFrame, confirming that the filtering logic handles invalid season names gracefully without crashing
 missing_season_data = data[data["Season"] == "NotARealSeason"]
