@@ -12,7 +12,7 @@
 
 # Deploying the web application
 
-The application can be deployed as a Flask web service (for example, on Render) so visitors can use it without downloading the code.
+The application can be deployed as a Flask web service (On Railway) so visitors can use it without downloading the code.
 
 1. Push this project to a GitHub repository and connect that repository to a new web service.
 2. Set the build command to `pip install -r requirements.txt`.
@@ -20,5 +20,6 @@ The application can be deployed as a Flask web service (for example, on Render) 
 4. Add a persistent disk mounted at `/var/data`. Set `ACCOUNT_DB` to `/var/data/accounts.sqlite3` and `FEEDBACK_FILE` to `/var/data/feedback.csv` so accounts and feedback survive deployments.
 5. Set `FLASK_SECRET_KEY` to a generated secret and `FLASK_COOKIE_SECURE` to `1`. Do not commit these secret values to GitHub.
 6. Deploy the service. The hosting provider will give it a public URL.
+the URL given is: https://assignment-production-e415.up.railway.app
 
 Keep the service to one running instance while using SQLite. If the application needs multiple instances, move the account and feedback storage to a managed database such as PostgreSQL.
