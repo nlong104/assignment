@@ -162,6 +162,10 @@ img {
     text-align: center;
 }   
 
+.temp-rainfall-intro {
+    text-align: center;
+}
+
 .birak-text {
     text-align: center;
 }
@@ -384,6 +388,80 @@ img {
         right: 28px;
     }
 }
+/* Birak image styling */
+.birak_image {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.birak_image figure {
+  flex: 1;
+  margin: 0;
+}
+
+.birak_image img {
+  width: 100%;
+  height: 400px;  /* fixed height for all images */
+  object-fit: cover;    /* fills the box and crops the overflow instead of stretching */
+}
+
+.birak-image-source {
+  flex-basis: 100%;   /* each source line takes its own full row under the images */
+  font-size: 0.8rem;
+  margin: 0 0 4px 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* Kambarang image styling */
+.kambarang_image {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.kambarang_image figure {
+  flex: 1;
+  margin: 0;
+}
+
+.kambarang_image img {
+  width: 100%;
+  height: 400px;  /* fixed height for all images */
+  object-fit: cover;    /* fills the box and crops the overflow instead of stretching */
+}
+
+.kambarang-image-source {
+  flex-basis: 100%;   /* each source line takes its own full row under the images */
+  font-size: 0.8rem;
+  margin: 0 0 4px 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* Makuru image styling */
+.makuru_image {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.makuru_image figure {
+  flex: 1;
+  margin: 0;
+}
+
+.makuru_image img {
+  width: 100%;
+  height: 400px;  /* fixed height for all images */
+  object-fit: cover;    /* fills the box and crops the overflow instead of stretching */
+}
+
+.makuru-image-source {
+  flex-basis: 100%;   /* each source line takes its own full row under the images */
+  font-size: 0.8rem;
+  margin: 0 0 4px 0 !important;
+  line-height: 1.2 !important;
+}
     </style>
 </head>
 <body>
@@ -393,10 +471,10 @@ img {
 
  <div id="home" class="screen active">
     <div class="home-text"> 
-    <h1>Family activities in the Nyoongar Seasons</h1>
+    <h1>Family Activities in the Nyoongar Seasons</h1>
     </div>
     <button class="my-activity-button" type="button" onclick="showScreen('account')">My Activity</button>
-    <h2>Of the six Nyoongar Calender seasons, 3 are the main focus for this app, due to their differences and alignment with the school holidays in Australia.</h2>
+    <h2>Of the six Nyoongar Calender seasons, three are the main focus for this app, due to their differences and alignment with the school holidays in Australia.</h2>
     <p>These are: <strong>Birak</strong> (Summer), <strong>Kambarang</strong> (Spring) and <strong>Makuru</strong> (Winter)</p>
 
     <div class="season-picker">
@@ -408,26 +486,33 @@ img {
 
     <p>To keep a log of the activities you have done, click on the "My Activity" button in the top right hand corner, and create or log into an existing account.</p>
     <p>To use the activity log, simply click on the dot point of the activity you want to log, and it will add it to your account's activity log.</p>
+
+    <div class="temp-rainfall-intro">
+    <h2>Temperature and Rainfall Patterns in the Nyoongar Region</h2>
+    </div>
     <p>The Nyoongar region is the south-western region of Western Australia. This includes the Perth metropolitan area and surrounding regions. Therefore, activities chosen are mainly focused in the Perth area from Rockingham to Hillarys.</p>
     <p>To understand which activities are suitable for each season, it is important to consider the weather patterns and natural occurrences of each time of year. This includes temperature and rainfall patterns:</p>
 <!-- Charts for temperature and precipitation, as well as maps  -->
     <div class="chart-row">
-        <img src="Data/average_monthly_temperature.png" alt="Average Monthly Temperature Chart">
+        <img src="Data/average_monthly_maximum_temperature.png" alt="Average Monthly Maximum Temperature Chart">
         <img src="Data/average_monthly_precipitation.png" alt="Average Monthly Precipitation Chart">
     </div>
+
+    <p>For example, during the Birak season, temperatures are typically warm (Average high between 30-32°C) and rainfall is minimal (Average of less than 20mm for each month), making it ideal for outdoor activities like bush walks and picnics.</p>
+
     <section class="map-section" aria-labelledby="map-heading">
         <div class="map-intro">
-            <h2 id="map-heading">The Noongar Regions enclosed in our study area</h2>
-            <p>These maps show the Whadjuk Noongar and Gnaala Karla Booja regions. These are the regions owned by the Indigenous people of Australia in which our activity areas are located (Hillarys to Rockingham).</p>
+            <h2 id="map-heading">The Nyoongar Regions enclosed in our study area</h2>
+            <p>These maps show the Whadjuk Nyoongar and Gnaala Karla Booja regions. These are the regions owned by the Indigenous people of Australia in which our activity areas are located (Hillarys to Rockingham).</p>
         </div>
         <div class="map-row">
             <figure>
               <img src="images/whadjuk%20noongar%20map.png" alt="Map showing Whadjuk Country around Perth">
-              <figcaption>Whadjuk Noongar Area Map</figcaption>
+              <figcaption>Whadjuk Nyoongar Area Map</figcaption>
             </figure>
             <figure>
-              <img src="images/G.K.B%20noongar%20map.png" alt="Map showing the broader Noongar region in south-western Western Australia">
-              <figcaption>Gnaala Karla Booja Noongar Map</figcaption>
+              <img src="images/G.K.B%20noongar%20map.png" alt="Map showing the broader Nyoongar region in south-western Western Australia">
+              <figcaption>Gnaala Karla Booja Nyoongar Map</figcaption>
             </figure>
         </div>
                 <p class="map-source">Source: https://www.wa.gov.au/government/publications/maps-of-noongar-native-title-agreement-groups-the-settlement</p>
@@ -492,9 +577,27 @@ img {
     <h2>Kambarang</h2>
     <h3>October to November</h3>
     </div>
-    <p>The season of wildflowers. Kambarang is a time of renewal and growth, when the land is covered in colorful blooms. The days are becoming warmer and drier</p>
-    <p>Average Temperature: 25.12°C</p>
+    <p>The season of wildflowers. Kambarang is a time of renewal and growth, when the land is covered in colorful blooms. The days are becoming warmer and drier.</p>
+    <p>Average Maximum Temperature: 25.12°C</p>
     <p>Average Precipitation: 32.16mm</p>
+
+    <div class="kambarang_image row">
+        <figure>
+            <img src="images/Kambarang-image-1.jpeg" alt="A photo of a wildflower field in Perth during the Kambarang season">
+            <figcaption>Wildflowers in Kings Park</figcaption>
+        </figure>
+        <figure>
+            <img src="images/kambarang-image-2.jpg" alt="A photo of Perth Zoo">
+            <figcaption>Perth Zoo</figcaption>
+        </figure>
+        <figure>
+             <img src="images/kambarang-image-3.jpg" alt="A photo of Perth in the Kambarang season">
+             <figcaption>View from Bold Park</figcaption>
+        </figure>
+    </div>
+        <p class="kambarang-image-source">Source 1: https://www.instagram.com/p/DOnp11xk-Ej/</p>
+        <p class="kambarang-image-source">Source 2: https://buggybuddys.com.au/giraffe-close-encounters-at-perth-zoo/</p>
+        <p class="kambarang-image-source">Source 3: https://perthisok.com/best-of-wa/bold-park/</p>
 
     <h3>Kambarang activities to do on a budget:</h3>
     <ul>
@@ -525,12 +628,30 @@ img {
         <h3>December to January</h3>
         </div>
     <p>The season of fire. Birak is a time of heat and dryness, where the Sea Breeze brings relief from the scorching sun. It's a time for outdoor activities and enjoying the natural beauty of the land.</p>
-    <p>Average Temperature: 30.53°C</p>
+    <p>Average Maximum Temperature: 30.53°C</p>
     <p>Average Precipitation: 12.9mm</p>
+
+    <div class="birak_image row">
+        <figure>
+            <img src="images/Birak-image.jpg" alt="A photo of a beach in Perth during the Birak season">
+            <figcaption>Scarborough Beach</figcaption>
+        </figure>
+        <figure>
+            <img src="images/Birak-image-2.jpeg" alt="A photo of a beach in Perth during the Birak season">
+            <figcaption>Cottesloe Beach</figcaption>
+        </figure>
+        <figure>
+            <img src="images/Birak-image-3.jpg" alt="A photo of adventure world in Perth during the Birak season">
+            <figcaption>Adventure World</figcaption>
+        </figure>
+    </div>
+        <p class="birak-image-source">Source 1: https://thewest.com.au/news/weather/perth-weather-perth-set-to-swelter-in-warmer-than-average-spring-temperatures-as-summer-comes-early--c-16539960</p>
+        <p class="birak-image-source">Source 2: https://www.destinationperth.com.au/blog/post/perth-weather-through-the-year/</p>
+        <p class="birak-image-source">Source 3: https://www.destinationperth.com.au/listing/adventure-world/14/</p>
 
     <h3>Birak activities to do on a budget:</h3>
     <ul>
-        <li><strong>Beaches:</strong> Cottesloe Beach, Omeo Wreck, Mettam's Pool, Hillary's Boat Harbour, and more for swimming, picnicing, and having fun with the family.</li>
+        <li><strong>Beaches:</strong> Cottesloe Beach, Omeo Wreck, Mettam's Pool, Hillarys Boat Harbour, and more for swimming, picnicing, and having fun with the family.</li>
         <li><strong>Kings Park walks:</strong> Visit Poolgarla family area, Rio Tinto Naturescape, Fraser Ave Precinct for a picnic, walk through the trails in the Botanic Gardens, visit the May Driver Parkland with the dinosaur statues, and walk through the numerous trails in Kings Park.</li>
         <li><strong>Go down to the Swan River:</strong> Go for a swim at any of the established swimming spots such as Matilda Bay, Point Walter and more. </li>
         <li><strong>Fremantle Markets:</strong> Visit the oldest market in Australia, open Fridays, Saturdays and Sundays, eat food and go shopping. </li>
@@ -543,7 +664,7 @@ img {
         <li><strong>Daytrip to Rottnest Island:</strong> Using any of the three ferry services to travel to the island, and then bike, walk or bus through the island to it's numerous beaches. Be on the lookout for Quokkas, the purple Rottnest Daisies, and grab a bite from the Rottnest Bakery, General Store, Pub and all other places on the island. </li>
         <li><strong>Outback Splash:</strong> Enjoy waterslides and other fun water activities, with areas for all ages to enjoy. Play mini golf, get lost in their maze, and enjoy food and drink on site. </li>
         <li><strong>Perth Wildlife Encounters dolphin swim (Rockingham):</strong> Book a trip to swim with and watch dolphins play in the water.</li>
-        <li><strong>AQWA:</strong> Located in Hillary's Boat Harbour, this marine park offers interactive exhibits and educational programs, with a touch pool, underwater tunnel and more.</li>
+        <li><strong>AQWA:</strong> Located in Hillarys Boat Harbour, this marine park offers interactive exhibits and educational programs, with a touch pool, underwater tunnel and more.</li>
         <li><strong>Caversham Wildlife Park:</strong> Meet koalas, wombats, kangaroos, reptiles, farm animals and little penguins, and enjoy walking through the grounds.</li>
     </ul>
     <button onclick="showScreen('home')">&larr; Back</button>
@@ -555,8 +676,27 @@ img {
     <h3>June to July</h3>
     </div>
     <p>The cold and wet season. Makuru is a time of rain and cooler temperatures, where the land rejuvenates and the rivers flow. It is a time for indoor activities and enjoying the warmth of home.</p>
-    <p>Average Temperature: 19.0°C</p>
+    <p>Average Maximum Temperature: 19.0°C</p>
     <p>Average Precipitation: 136.89mm</p>
+
+    <div class="makuru_image row">
+        <figure>
+            <img src="images/makuru-image-1.jpg" alt="A photo of a lightning storm in Perth during the Makuru season">
+            <figcaption>Lightning Storm over the Perth skyline</figcaption>
+        </figure>
+        <figure>
+            <img src="images/makuru-image-2.jpg" alt="A photo of Scitech">
+            <figcaption>Scitech Exhibition</figcaption>
+        </figure>
+        <figure>
+            <img src="images/makuru-image-3.jpeg" alt="A photo of Fremantle Prison">
+            <figcaption>Fremantle Prison</figcaption>
+        </figure>
+    </div>
+        <p class="makuru-image-source">Source 1: https://www.abc.net.au/news/2025-09-04/rainfall-records-tumble-in-wa-winter-data-and-photo-wrap/105704596</p>
+        <p class="makuru-image-source">Source 2: https://www.scitech.org.au/support/hire-an-exhibition/</p>
+        <p class="makuru-image-source">Source 3: https://fremantleprison.com.au</p>
+
     <h3>Makuru activities to do on a budget:</h3>
     <ul>
         <li><strong>Visit the Perth Cultural Centre:</strong> Explore museums, galleries, and libraries.</li>
