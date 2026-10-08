@@ -1,5 +1,17 @@
 # assignment
 
+# How to use the application
+To begin using the application, the user will access the site via the link. (https://assignment-production-e415.up.railway.app)
+Once the application has loaded and is open in their browser, the user is presented with information about the app and is given the option to switch to 4 different screens. 
+
+The user can click on the My Activity button in the top right hand corner of the screen, to access their personal activity for the app. Here, they can also log in or create their account to store this information. 
+
+The user can also click on one of the three seasons that the app offers information and activities about. These are Birak, Kambarang and Makuru. 
+
+When the user makes their selection to any of these screens (seasonal or My Activity) they can read the page and then exit using the "Back" button that is either at the bottom or the top of the page. This will automatically bring the user back to the homepage. 
+
+At the bottom of the homepage, the user has the option to rate the site/application based on how their experience was. There are 5 options here, from "Very Unhappy" to "Very Happy". 
+
 
 
 # testing the application 
