@@ -1,4 +1,4 @@
-# assignment
+# About Natasha Long and Hannah Foley's Assignment Application
 
 # How to use the application
 To begin using the application, the user will access the site via the link. (https://assignment-production-e415.up.railway.app)
