@@ -58,68 +58,7 @@ How you verified it, since the rubric asks for verification of AI output
 **How i verified it:** After putting the images in, i checked to make sure they appeared where i wanted on the homepage. 
 
 
-## Entry 7: Automated tests 
-// reusable assertion function for testing that compares actual and expected values and logs the result
-    function assertEqual(actual, expected, testName) {
-      if (actual === expected) {
-        console.log(`PASS: ${testName}`);
-      } else {
-        console.log(`FAIL: ${testName} — expected ${expected}, got ${actual}`);
-      }
-    }
-
-    // Test 1: Home screen is active by default - tests whether the home div has the 'active' class when the page loads
-    showScreen('home');
-    assertEqual(document.getElementById('home').classList.contains('active'), true, 'home screen is active by default');
-
-    // Test 2: Switching to a valid screen activates it - tests whether the birak div has the 'active' class after calling showScreen('birak')
-    showScreen('birak');
-    assertEqual(document.getElementById('birak').classList.contains('active'), true, 'birak becomes active when selected');
-
-    // Test 3: Switching away removes the old active class - tests whether the birak div loses the 'active' class after switching to kambarang
-    showScreen('kambarang');
-    assertEqual(document.getElementById('birak').classList.contains('active'), false, 'birak loses active when switching to kambarang');
-
-    // Test 4: Only one screen is ever active at a time - tests whether only one div has the 'active' class after switching to makuru
-    showScreen('makuru');
-    const activeScreens = document.querySelectorAll('.screen.active');
-    assertEqual(activeScreens.length, 1, 'exactly one screen is active at a time');
-
-    // Test 5: An invalid season id doesn't crash the app - tests whether calling showScreen with an invalid id throws an error or not
-    try {
-    showScreen('doesnotexist');
-    assertEqual(true, true, 'invalid id does not crash the app');
-    } catch (e) {
-    assertEqual(false, true, 'invalid id does not crash the app');
-    }
-
-    showScreen('home'); // reset back to home after testing
-
-    # Test 6: Birak filter only includes Dec/Jan rows - checks that the birak_data DataFrame only contains rows where the Month is either 12 (December) or 1 (January)
-    birak_data = data[data["Month"].isin([12, 1])]
-    only_birak_months = birak_data["Month"].isin([12, 1]).all()
-    assert_equal(only_birak_months, True, "Birak filter only contains Dec/Jan rows")
-
-    # Test 7: Season_Year correctly pairs Dec with the following Jan - shows that the Season_Year for December 1994 is the same as for January 1995, confirming that the season year is correctly assigned across the year boundary
-    dec_1994_year = data[(data["Year"] == 1994) & (data["Month"] == 12)]["Season_Year"].iloc[0]
-    jan_1995_year = data[(data["Year"] == 1995) & (data["Month"] == 1)]["Season_Year"].iloc[0]
-    assert_equal(dec_1994_year, jan_1995_year, "Dec 1994 and Jan 1995 share the same Season_Year")
-
-    # Test 8: Averaging calculation matches a hand-checked value - checks that the average of 20 and 30 is correctly calculated as 25 by the average_metric function, so that we know the function is working correctly
-    sample_data = pd.DataFrame({"Temperature": [20, 30]})
-    assert_equal(average_metric(sample_data, "Temperature"), 25, "average_metric() correctly averages 20 and 30 to 25")
-
-    # Test 9: Color list length always matches bar count - checks that the length of the colors list is equal to the number of months (12), ensuring that there is a color assigned for each month in the chart
-    month_names = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-    season_lookup = data.groupby("Month")["Season"].first()
-    colors = ["#BBBBBB" if season_lookup[m] == "Other" else "#23406B" for m in range(1, 13)]
-    assert_equal(len(colors), len(month_names), "color list has exactly one entry per month")
-
-    # Test 10: Filtering for a season that doesn't exist returns empty, doesn't crash - checks that filtering the data for a season name that doesn't exist ("NotARealSeason") returns an empty DataFrame, confirming that the filtering logic handles invalid season names gracefully without crashing
-    missing_season_data = data[data["Season"] == "NotARealSeason"]
-    assert_equal(len(missing_season_data), 0, "filtering an invalid season name returns an empty result, not a crash")
-
-## Entry 8: User site rating buttons
+## Entry 7: User site rating buttons
 **Tool:** VS Code AI
 **Date:** 1 Oct 2026
 **What I asked:** I want to create a code for user output on the main screen, with a scale with a range of faces from sad to happy, asking "how would you rate this site". The user should be able to click on the face that aligns with their thoughts, and this record will be stored.
@@ -128,7 +67,7 @@ How you verified it, since the rubric asks for verification of AI output
 **How i verified it:** I made sure the code worked, and ran it a few times to check. I clicked the buttons and made sure that it was recorded properly in the CSV file. 
 
 
-## Entry 9: Create a "my account" section
+## Entry 8: Create a "my account" section
 **Tool:** VS Code AI
 **Date:** 1 Oct 2026
 **What i asked:** how can we make another screen that is accessed by button, to allow a user to make or create an account using a username and password, or login to an existing account and enter their existing username and password, to access a page where a record is kept of all things they have done from the website, recorded by clicking the activitiy they did
@@ -139,3 +78,22 @@ How you verified it, since the rubric asks for verification of AI output
 **What i added:** I then asked the ai to change the way activities were marked as done, making sure that you can check and uncheck the black point next to the activity.
 **What the AI produced:** it did this, changing from the initial selection of the whole line of text, to just the black dot at the start of the activity
 **How i verified it:** I checked that it worked, and that when you added an activity it was recorded on your profile. I then checked to make sure that when you unchecked the acitivity, that it was then unrecorded form your profile. 
+
+
+# Entry 9: Creating/styling buttons 
+**Tool:** Claude
+**Date:** 27 Sep 2026
+**What I asked:** How to create buttons from a python application that switch between screens.
+**What the AI produced:** A general template for how to insert a button into the app, and how to add some styles to it.
+**What I wrote or changed myself:** Added in the specific button names and screen names to that the buttons would work with this specific app, changed button style so that the font was the same as the rest of the app and that the buttons were centred on the screen. Then could use this template for all other buttons on the app.
+**How I verified it:** Ran the code and opened the server to see whether the buttons were working correctly and had the correct styling.
+
+# Entry 10: Activity images 
+**Tool:** Claude
+**Date:** 5 Oct 2026
+**What I asked:** How to add multiple images in a row
+**What the AI produced:** Code to allow the three images to be side by side on the screen.
+**What I changed/wrote myself:** The images were not of equal dimensions so the images were then cropped so that they fit evenly on te screen.
+**How I verified it:** Ran the code and opened to server to see whether the images fit the way they were intended to.
+
+
