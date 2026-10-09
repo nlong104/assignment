@@ -1,3 +1,25 @@
+# what should be in the ai log
+What you asked the AI to do
+What it produced, and which tool you used
+What you kept or changed
+How you verified it, since the rubric asks for verification of AI output
+
+## Entry 1: Automated tests
+**Tool:** Claude
+**Date:** 4 Oct 2026
+**What I asked:** Help planning automated tests for the code that switches screens and the data processing.
+**What the AI produced:** A set of 5 JavaScript tests and 4 Python tests, plus an `assertEqual` helper.
+**What I used / changed:** Used the tests, replaced Test 9 (it tested color logic that didn't end up in the final chart), and added Test 10 for invalid input.
+**How I verified it:** Ran `tests.html` and `test_data.py` and checked all tests passed. Found that Test 9 didn't match my code anymore and rewrote it to match the final version.
+
+## Entry 2: Weather data loading and season summaries
+**Tool:** Claude
+**Date:** 26 Sep 2026
+**What I asked:** Help writing code to load temperature and precipitation data from `combined_data.csv` and work out average values for each Nyoongar season.
+**What the AI produced:** A Python script with functions to load the CSV, match each month to a season, and calculate average temperature and precipitation per season.
+**What I used / changed:** Used the structure and functions, but changed the seasons to Kambarang, Makuru and Birak, changed the column names to match my file (`Year`, `Month`, `Temperature`, `Precipitation`), and edited the comments. The season months were placeholders from the AI, so I replaced them with timings from [your source].
+**How I verified it:** [e.g. Ran `python weather_data.py` and checked that the number of rows loaded matched my CSV, and checked one season's average by hand.] d
+
 
 # weather_data.py:
     Loads weather data from a CSV, tags each row with a Nyoongar season, and gives you simple summary stats (avg temperature, avg precipitation) per season.
