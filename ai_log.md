@@ -1,4 +1,4 @@
-# what should be in the ai log
+# What should be in the ai log
 What you asked the AI to do
 What it produced, and which tool you used
 What you kept or changed
@@ -12,35 +12,35 @@ How you verified it, since the rubric asks for verification of AI output
 **What I used / changed:** Used the tests, replaced Test 9 (it tested color logic that didn't end up in the final chart), and added Test 10 for invalid input.
 **How I verified it:** Ran `tests.html` and `test_data.py` and checked all tests passed. Found that Test 9 didn't match my code anymore and rewrote it to match the final version.
 
+
 ## Entry 2: Weather data loading and season summaries
 **Tool:** Claude
 **Date:** 26 Sep 2026
 **What I asked:** Help writing code to load temperature and precipitation data from `combined_data.csv` and work out average values for each Nyoongar season.
-**What the AI produced:** A Python script with functions to load the CSV, match each month to a season, and calculate average temperature and precipitation per season.
-**What I used / changed:** Used the structure and functions, but changed the seasons to Kambarang, Makuru and Birak, changed the column names to match my file (`Year`, `Month`, `Temperature`, `Precipitation`), and edited the comments. The season months were placeholders from the AI, so I replaced them with timings from [your source].
-**How I verified it:** [e.g. Ran `python weather_data.py` and checked that the number of rows loaded matched my CSV, and checked one season's average by hand.] d
+**What the AI produced:** A Python script with code that loads the CSV, matches each month to a season, and calculates average temperature and precipitation for each season.
+**What I used / changed:** Used the structure and functions, but changed the seasons to Kambarang, Makuru and Birak, and changed the column names to match my file (`Year`, `Month`, `Temperature`, `Precipitation`). 
+**How I verified it:** Ran `python weather_data.py` and checked that the number of rows loaded matched the CSV file
 
 
-## Entry 3: weather_data.py:
-    Loads weather data from a CSV, tags each row with a Nyoongar season, and gives you simple summary stats (avg temperature, avg precipitation) per season.
-
-    Input file
-        combined_data.csv needs these columns: Year, Month, Temperature, Precipitation. Bad or missing rows are skipped automatically.
-    Seasons mapped
-        Season	Months
-            Kambarang	Oct, Nov
-            Makuru	Jun, Jul
-            Birak	Dec, Jan
-    Functions
-        load_weather_data(filepath) — reads the CSV, returns a list of row dictionaries (each tagged with its season).
-        get_season_summary(records, season_name) — returns avg temp, avg precipitation, and record count for one season.
-        get_all_season_summaries(records) — same, but for every mapped season.
+## Entry 3: Creating charts
+**Tool:** Claude
+**Date:** 30 Sep 2026
+**What I asked:** How how to fix problems with chart sizing and alignment, and how polish a simpel chart.
+**What the AI produced:** The basic pandas and matplotlib approach (grouping the data by month, taking the mean, and plotting a line chart and a bar chart), plus labelling the months and positioning the plot area.
+**What I wrote or changed myself:** Chose the colours and fonts so that the plots matched the application and blended seemlessly into the background, wrote the titles and axis labels, and adapted the code to the `combined_data.py` dataset.
+**Problem found and fixed:** The two charts didn't line up when shown side by side. Using `tight_layout()` together with `subplots_adjust()` overrode my manual margins, so I removed `tight_layout()` and kept the fixed margins.
+**How I verified it:** I opened the saved images to check all 12 months appeared and the axes were labelled correctly, and checked they displayed side by side in the app. Test 9 in `test_data.py` also confirms the monthly grouping produces exactly 12 entries.
 
 
-combining_data.py:
+## Entry 4: Combining CSV data
+**Tool:** Claude 
+**Date:** 25 Sep 2026
+**What I asked"** How to combine two datasets with the same headings into on dataset.
+**What the AI produced:** Code used to combine two datasets, code to check it has combined correctly and to created a CSV file called `combined_data.py`.
+**How I verified it:** Checked that the combined data lined up with the each of the individual sets to know that it was combined correctly.
 
 
-## Entry 4: Add images to the border of the whole application
+## Entry 5: Add images to the border of the whole application
 **Tool:** ChatGPT
 **Date:** 29 Sep 2026
 **What I Asked:** Write code that puts images on the edge left and right border of the website page that goes from top to bottom. I want it to stay the same size no matter the size of the window.
@@ -49,7 +49,7 @@ combining_data.py:
 **How i verified it:** I ran it and checked that it used the correct image and was in the correct spot on the application. 
 
 
-## Entry 5: Map inclusion in the home page
+## Entry 6: Map inclusion in the home page
 **Tool:** VS Code AI
 **Date:** 4 Oct 2026
 **What i asked:** I want to add images underneath the graphs on the homeage, where is the right place to add this in
@@ -58,7 +58,7 @@ combining_data.py:
 **How i verified it:** After putting the images in, i checked to make sure they appeared where i wanted on the homepage. 
 
 
-## Entry 6: automated tests 
+## Entry 7: Automated tests 
 // reusable assertion function for testing that compares actual and expected values and logs the result
     function assertEqual(actual, expected, testName) {
       if (actual === expected) {
@@ -119,7 +119,7 @@ combining_data.py:
     missing_season_data = data[data["Season"] == "NotARealSeason"]
     assert_equal(len(missing_season_data), 0, "filtering an invalid season name returns an empty result, not a crash")
 
-## Entry 7: User site rating buttons
+## Entry 8: User site rating buttons
 **Tool:** VS Code AI
 **Date:** 1 Oct 2026
 **What I asked:** I want to create a code for user output on the main screen, with a scale with a range of faces from sad to happy, asking "how would you rate this site". The user should be able to click on the face that aligns with their thoughts, and this record will be stored.
@@ -128,7 +128,7 @@ combining_data.py:
 **How i verified it:** I made sure the code worked, and ran it a few times to check. I clicked the buttons and made sure that it was recorded properly in the CSV file. 
 
 
-## Entry 8: Create a "my account" section
+## Entry 9: Create a "my account" section
 **Tool:** VS Code AI
 **Date:** 1 Oct 2026
 **What i asked:** how can we make another screen that is accessed by button, to allow a user to make or create an account using a username and password, or login to an existing account and enter their existing username and password, to access a page where a record is kept of all things they have done from the website, recorded by clicking the activitiy they did
