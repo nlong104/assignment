@@ -40,7 +40,7 @@ How you verified it, since the rubric asks for verification of AI output
 **How i verified it:** I ran it and checked that it used the correct image and was in the correct spot on the application. 
 
 
-## Entry 4: Creating charts
+## Entry 5: Creating charts
 **Tool:** Claude
 **Date:** 30 Sep 2026
 **What I asked:** How how to fix problems with chart sizing and alignment, and how polish a simpel chart.
