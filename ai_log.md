@@ -21,7 +21,7 @@ How you verified it, since the rubric asks for verification of AI output
 **How I verified it:** [e.g. Ran `python weather_data.py` and checked that the number of rows loaded matched my CSV, and checked one season's average by hand.] d
 
 
-# weather_data.py:
+## Entry 3: weather_data.py:
     Loads weather data from a CSV, tags each row with a Nyoongar season, and gives you simple summary stats (avg temperature, avg precipitation) per season.
 
     Input file
@@ -39,67 +39,26 @@ How you verified it, since the rubric asks for verification of AI output
 
 combining_data.py:
 
-# for the frontend button change:
-/* ...existing code... */
-.screen:not(#home) button {
-  border-color: navy;
-  color: navy;
-}
-/* ...existing code... */
 
-# to add images to the border of the whole application
-/* Full-page decorative borders */
-body::before,
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 65px;
+## Entry 4: Add images to the border of the whole application
+**Tool:** ChatGPT
+**Date:** 29 Sep 2026
+**What I Asked:** Write code that puts images on the edge left and right border of the website page that goes from top to bottom. I want it to stay the same size no matter the size of the window.
+**What the AI Produced:** a Python script that added in the images and gave code about where they should be placed on the page. 
+**What I used/changed:** I added the code and then saw how it looked in the app. I then changed the width of the image to how i wanted it. 
+**How i verified it:** I ran it and checked that it used the correct image and was in the correct spot on the application. 
 
-    background: url("images/Border-image.jpg") center / cover no-repeat;
 
-    pointer-events: none;
-    z-index: 10;
-}
+## Entry 5: Map inclusion in the home page
+**Tool:** VS Code AI
+**Date:** 4 Oct 2026
+**What i asked:** I want to add images underneath the graphs on the homeage, where is the right place to add this in
+**What the AI produced:** It told me exactly where to start writing the code needed to add the images in. (Immediately after the graphs' closing </div>, and before the "How would you rate this site" section in frontend.html) Add a <section> there with the image and text.
+**What i used/changed:** I added in some text of my own underneath this section, and the AI was correct in where to put it. I did not need to change anything, and i used this suggestion.
+**How i verified it:** After putting the images in, i checked to make sure they appeared where i wanted on the homepage. 
 
-/* Left border */
-body::before {
-    left: 0;
-}
 
-/* Right border */
-body::after {
-    right: 0;
-}
-
-# for the map inclusion in the home page
-
-.map-source {
-    font-size: 0.8rem;
-}
-
-  </div>
-    <section class="map-section" aria-labelledby="map-heading">
-        <div class="map-intro">
-            <h2 id="map-heading">The Noongar Regions enclosed in our study area</h2>
-            <p>These maps show the Whadjuk Noongar and Gnaala Karla Booja regions. These are the regions owned by the Indigenous people of Australia in which our activity areas are located (Hillarys to Rockingham).</p>
-        </div>
-        <div class="map-row">
-            <figure>
-              <img src="images/whadjuk%20noongar%20map.png" alt="Map showing Whadjuk Country around Perth">
-              <figcaption>Whadjuk Noongar Area Map</figcaption>
-            </figure>
-            <figure>
-              <img src="images/G.K.B%20noongar%20map.png" alt="Map showing the broader Noongar region in south-western Western Australia">
-              <figcaption>Gnaala Karla Booja Noongar Map</figcaption>
-            </figure>
-        </div>
-                <p class="map-source">Source: https://www.wa.gov.au/government/publications/maps-of-noongar-native-title-agreement-groups-the-settlement</p>
-
-    </section>
-
-# automated tests 
+## Entry 6: automated tests 
 // reusable assertion function for testing that compares actual and expected values and logs the result
     function assertEqual(actual, expected, testName) {
       if (actual === expected) {
@@ -159,3 +118,24 @@ body::after {
     # Test 10: Filtering for a season that doesn't exist returns empty, doesn't crash - checks that filtering the data for a season name that doesn't exist ("NotARealSeason") returns an empty DataFrame, confirming that the filtering logic handles invalid season names gracefully without crashing
     missing_season_data = data[data["Season"] == "NotARealSeason"]
     assert_equal(len(missing_season_data), 0, "filtering an invalid season name returns an empty result, not a crash")
+
+## Entry 7: User site rating buttons
+**Tool:** VS Code AI
+**Date:** 1 Oct 2026
+**What I asked:** I want to create a code for user output on the main screen, with a scale with a range of faces from sad to happy, asking "how would you rate this site". The user should be able to click on the face that aligns with their thoughts, and this record will be stored.
+**What the AI Produced:** It produced code that initially did not work. After changing the port that Flask was running on to 8000, the code worked. It produced code that showed 5 faces from Very Unhappy to Very Happy, that appeared on the bottom of the home page as asked. It also created a CSV file to store this data, and automatically recorded the selection of these results in that CSV file
+**What i used/changed:** I changed the text and the way the area looked slightly. I changed the colours of the button's borders to match the rest of the site. I also made another section that showed the user when the rating was saved after clicking it. 
+**How i verified it:** I made sure the code worked, and ran it a few times to check. I clicked the buttons and made sure that it was recorded properly in the CSV file. 
+
+
+## Entry 8: Create a "my account" section
+**Tool:** VS Code AI
+**Date:** 1 Oct 2026
+**What i asked:** how can we make another screen that is accessed by button, to allow a user to make or create an account using a username and password, or login to an existing account and enter their existing username and password, to access a page where a record is kept of all things they have done from the website, recorded by clicking the activitiy they did
+**What the AI produced:** It made basic code for an activity screen with a login or sign in page 
+**What i used/changed:** I used this page, and then also asked the AI to separate the login information and secure it. I also asked it to include the parameters that the username and password needed when creating an account on the screen
+**What the AI produced:** It made a file to securely store the login info. It included the parameters on the login page needed to make an account.
+**How i verified it:** I checked every step of the way to make sure the code made sense and that it worked on the application. When it did not work, or missed something that i wanted included, i got AI to go through the code again and fix it. 
+**What i added:** I then asked the ai to change the way activities were marked as done, making sure that you can check and uncheck the black point next to the activity.
+**What the AI produced:** it did this, changing from the initial selection of the whole line of text, to just the black dot at the start of the activity
+**How i verified it:** I checked that it worked, and that when you added an activity it was recorded on your profile. I then checked to make sure that when you unchecked the acitivity, that it was then unrecorded form your profile. 
